@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://trialbalance.net.au/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://trialbalance.net.au/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://trialbalance.net.au/">
+      <s:element name="UploadBuild">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buildNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="buildDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="isSuccessful" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="buildStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="version" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPublic" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="releaseNotes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sourceCodeUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="installerUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clickOnceUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadBuildResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNextBuildNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextBuildNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNextBuildNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadBuildSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadBuild" />
+  </wsdl:message>
+  <wsdl:message name="UploadBuildSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadBuildResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextBuildNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNextBuildNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetNextBuildNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNextBuildNumberResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UploadBuildServiceSoap">
+    <wsdl:operation name="UploadBuild">
+      <wsdl:input message="tns:UploadBuildSoapIn" />
+      <wsdl:output message="tns:UploadBuildSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextBuildNumber">
+      <wsdl:input message="tns:GetNextBuildNumberSoapIn" />
+      <wsdl:output message="tns:GetNextBuildNumberSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UploadBuildServiceSoap" type="tns:UploadBuildServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadBuild">
+      <soap:operation soapAction="http://trialbalance.net.au/UploadBuild" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextBuildNumber">
+      <soap:operation soapAction="http://trialbalance.net.au/GetNextBuildNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UploadBuildServiceSoap12" type="tns:UploadBuildServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadBuild">
+      <soap12:operation soapAction="http://trialbalance.net.au/UploadBuild" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextBuildNumber">
+      <soap12:operation soapAction="http://trialbalance.net.au/GetNextBuildNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UploadBuildService">
+    <wsdl:port name="UploadBuildServiceSoap" binding="tns:UploadBuildServiceSoap">
+      <soap:address location="http://www.trialbalance.net.au/Services/UploadBuildService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UploadBuildServiceSoap12" binding="tns:UploadBuildServiceSoap12">
+      <soap12:address location="http://www.trialbalance.net.au/Services/UploadBuildService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

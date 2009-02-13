@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:tbc="clr-namespace:PaulStovell.TrialBalance.UserInterface.Converters"
+	x:Class="PaulStovell.TrialBalance.UserInterface.Resources.ConverterResources"
+    >
+	<tbc:BalanceConverter x:Key="Converter_BalanceConverter" />
+	<tbc:AccountTypeImageConverter x:Key="Converter_AccountTypeImageConverter" />
+	<tbc:DateConverter x:Key="Converter_DateConverter" />
+	<tbc:NumberConverter x:Key="Converter_NumberConverter" />
+	<tbc:VisibilityConverter x:Key="Converter_VisibilityConverter" />
+	<tbc:DecimalConverter x:Key="Converter_DecimalConverter" />
+	<tbc:BalanceColumnNumberConverter x:Key="Converter_BalanceColumnNumberConverter" />
+    <tbc:AccountConverter x:Key="Converter_AccountConverter" />
+</ResourceDictionary>

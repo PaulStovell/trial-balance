@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+	<ImageSource x:Key="Image_RedBall">pack://application:,,,/Resources/Images/bullet_ball_glass_red.png</ImageSource>
+	<ImageSource x:Key="Image_GreenBall">pack://application:,,,/Resources/Images/bullet_ball_glass_green.png</ImageSource>
+	<ImageSource x:Key="Image_YellowBall">pack://application:,,,/Resources/Images/bullet_ball_glass_yellow.png</ImageSource>
+	<ImageSource x:Key="Image_NavigationBack">pack://application:,,,/Resources/Images/nav_left_green.png</ImageSource>
+	<ImageSource x:Key="Image_NavigationForward">pack://application:,,,/Resources/Images/nav_right_green.png</ImageSource>
+	<ImageSource x:Key="Image_NavigationRefresh">pack://application:,,,/Resources/Images/recycle.png</ImageSource>
+	<ImageSource x:Key="Image_Reporting_Position">pack://application:,,,/Resources/Images/compass.png</ImageSource>
+	<ImageSource x:Key="Image_Reporting_Performance">pack://application:,,,/Resources/Images/line_chart.png</ImageSource>
+	<ImageSource x:Key="Image_Reporting_TrialBalance">pack://application:,,,/Resources/Images/checks.png</ImageSource>
+	<ImageSource x:Key="Image_Key">pack://application:,,,/Resources/Images/Key.png</ImageSource>
+	<ImageSource x:Key="Image_Save">pack://application:,,,/Resources/Images/disk_blue.png</ImageSource>
+	<ImageSource x:Key="Image_Asset">pack://application:,,,/Resources/Images/factory.png</ImageSource>
+	<ImageSource x:Key="Image_Liability">pack://application:,,,/Resources/Images/scroll.png</ImageSource>
+	<ImageSource x:Key="Image_Revenue">pack://application:,,,/Resources/Images/moneybag_dollar.png</ImageSource>
+	<ImageSource x:Key="Image_Expense">pack://application:,,,/Resources/Images/sort_descending.png</ImageSource>
+	<ImageSource x:Key="Image_Equity">pack://application:,,,/Resources/Images/percent.png</ImageSource>
+	<ImageSource x:Key="Image_Delete">pack://application:,,,/Resources/Images/delete2.png</ImageSource>
+	<ImageSource x:Key="Image_ApplicationIcon">pack://application:,,,../TrialBalance.ico</ImageSource>
+	<ImageSource x:Key="Image_Warning">pack://application:,,,/Resources/Images/warning.png</ImageSource>
+	<ImageSource x:Key="Image_NewAccount">pack://application:,,,/Resources/Images/TrialBalance-Account-Add.ico</ImageSource>
+	<ImageSource x:Key="Image_NewTransaction">pack://application:,,,/Resources/Images/TrialBalance-Transaction-Add.ico</ImageSource>
+	<ImageSource x:Key="Image_Workbook">pack://application:,,,/Resources/Images/books.png</ImageSource>
+	<ImageSource x:Key="Image_AccountType">pack://application:,,,/Resources/Images/index.png</ImageSource>
+	<ImageSource x:Key="Image_Reports">pack://application:,,,/Resources/Images/briefcase2.png</ImageSource>
+	<ImageSource x:Key="Image_Report">pack://application:,,,/Resources/Images/document_chart.png</ImageSource>
+	<ImageSource x:Key="Image_PeriodBack">pack://application:,,,/Resources/Images/media_step_back.png</ImageSource>
+	<ImageSource x:Key="Image_PeriodForward">pack://application:,,,/Resources/Images/media_step_forward.png</ImageSource>
+	<ImageSource x:Key="Image_Period">pack://application:,,,/Resources/Images/hourglass.png</ImageSource>
+    <ImageSource x:Key="Image_Properties">pack://application:,,,/Resources/Images/application_form_edit.png</ImageSource>
+	<ImageSource x:Key="Image_CommandLink">pack://application:,,,/Resources/Images/commandlink.png</ImageSource>
+</ResourceDictionary>

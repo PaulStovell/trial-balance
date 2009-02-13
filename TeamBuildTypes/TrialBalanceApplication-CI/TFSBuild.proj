@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="DesktopBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\TeamBuild\Microsoft.TeamFoundation.Build.targets" />
+    <Import Project="MSBuildCommunityTasks\MSBuild.Community.Tasks.targets" />
+    <Import Project="Readify\Readify.MSBuild.Tasks.targets" />
+
+    <UsingTask AssemblyFile="UploadBuild\PaulStovell.TrialBalance.Website.UploadBuildTask.dll" TaskName="PaulStovell.TrialBalance.Website.UploadBuildTask.UploadManagedFileTask" />
+    <UsingTask AssemblyFile="UploadBuild\PaulStovell.TrialBalance.Website.UploadBuildTask.dll" TaskName="PaulStovell.TrialBalance.Website.UploadBuildTask.UploadUnmanagedFileTask" />
+    <UsingTask AssemblyFile="UploadBuild\PaulStovell.TrialBalance.Website.UploadBuildTask.dll" TaskName="PaulStovell.TrialBalance.Website.UploadBuildTask.UploadBuildTask" />
+    <UsingTask AssemblyFile="UploadBuild\PaulStovell.TrialBalance.Website.UploadBuildTask.dll" TaskName="PaulStovell.TrialBalance.Website.UploadBuildTask.GetNextBuildVersionTask" />
+    
+    <ProjectExtensions>
+        <Description>A continuous build for TrialBalance</Description>
+        <BuildMachine>SQUIDWARD</BuildMachine>
+    </ProjectExtensions>
+    
+    <PropertyGroup>
+        <TeamProject>TrialBalance</TeamProject>
+        <BuildDirectoryPath>T:\Builds</BuildDirectoryPath>
+        <DropLocation>\\squidward\drops</DropLocation>
+        <RunTest>true</RunTest>
+        <WorkItemFieldValues>Symptom=build break;Steps To Reproduce=Start the build using Team Build</WorkItemFieldValues>
+        <RunCodeAnalysis>Never</RunCodeAnalysis>
+        <UpdateAssociatedWorkItems>true</UpdateAssociatedWorkItems>
+        <WorkItemTitle>Build failure in build:</WorkItemTitle>
+        <DescriptionText>This work item was created by Team Build on a build failure.</DescriptionText>
+        <BuildlogText>The build log file is at:</BuildlogText>
+        <ErrorWarningLogText>The errors/warnings log file is at:</ErrorWarningLogText>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <SolutionToBuild Include="$(SolutionRoot)\Application\Trunk\Source Code\TrialBalance.sln" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <ConfigurationToBuild Include="Release|Any CPU">
+            <FlavorToBuild>Release</FlavorToBuild>
+            <PlatformToBuild>Any CPU</PlatformToBuild>
+        </ConfigurationToBuild>
+        <ConfigurationToBuild Include="Debug|Any CPU">
+            <FlavorToBuild>Debug</FlavorToBuild>
+            <PlatformToBuild>Any CPU</PlatformToBuild>
+        </ConfigurationToBuild>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <MetaDataFile Include="$(SolutionRoot)\Application\Trunk\Source Code\TrialBalance.vsmdi">
+            <TestList>CI Tests</TestList>
+        </MetaDataFile>
+    </ItemGroup>
+
+    <Target Name="BeforeCompile">
+        <!-- Get the version number to use by calling the web service -->
+        <GetNextBuildVersionTask Username="BuildPublisher" Password="a!2sd#4f">
+            <Output TaskParameter="NextVersion" PropertyName="CustomVersion" />
+        </GetNextBuildVersionTask>
+
+        <!-- Now replace all 1.0.0.0 version number occurrances with the real version number for this build -->
+        <CreateItem Include="$(SolutionRoot)\Application\**\AssemblyInfo.cs">
+            <Output TaskParameter="Include" ItemName="AssemblyInfoFiles" />
+        </CreateItem>
+        <Attrib Files="@(AssemblyInfoFiles)" ReadOnly="false" />
+        <FileUpdate Regex="1.0.0.0" ReplacementText="$(CustomVersion)" Files="@(AssemblyInfoFiles)" />
+
+        <!-- Now zip all of the source code and copy it to the drop location -->
+        <CreateItem Include="$(SolutionRoot)\Application\**\*.*">
+            <Output TaskParameter="Include" ItemName="AllSourceCodeFiles" />
+        </CreateItem>
+        <Copy SourceFiles="@(AllSourceCodeFiles)"
+              DestinationFiles="@(AllSourceCodeFiles ->'Temp\TrialBalance-$(CustomVersion)\%(RecursiveDir)%(Filename)%(Extension)')"
+              ContinueOnError="true" 
+              />
+        <RemoveSourceCodeControlBindingsTask SourceDirectory="Temp" />
+        <CreateItem Include="Temp\TrialBalance-$(CustomVersion)\**\*.*">
+            <Output TaskParameter="Include" ItemName="StrippedSourceCodeFiles" />
+        </CreateItem>
+        <Zip Files="@(StrippedSourceCodeFiles)"
+             WorkingDirectory="Temp"
+             ZipFileName="$(DropLocation)\$(BuildNumber)\TrialBalance-$(BuildNumber)-Source.zip" 
+             />
+    </Target>
+
+    <Target Name="AfterDropBuild">
+        <CreateItem Include="SetupScript\TrialBalance.iss">
+            <Output TaskParameter="Include" ItemName="TrialBalanceSetupScriptFile" />
+        </CreateItem>
+        <Attrib Files="@(TrialBalanceSetupScriptFile)" ReadOnly="false" />
+        <FileUpdate Regex="AppVerName=TrialBalance 1.0" ReplacementText="AppVerName=TrialBalance $(CustomVersion)" Files="@(TrialBalanceSetupScriptFile)" />
+        
+        <!-- Copy binaries and documents to installer subdirectory -->
+        <CreateItem Include="$(DropLocation)\$(BuildNumber)\Release\**">
+            <Output TaskParameter="Include" ItemName="AllBinaryFiles" />
+        </CreateItem>
+        <Copy SourceFiles="@(AllBinaryFiles)"
+              DestinationFiles="@(AllBinaryFiles ->'SetupScript\TrialBalanceCode\Bin\%(RecursiveDir)%(Filename)%(Extension)')"
+              ContinueOnError="true" 
+              />
+        <CreateItem Include="$(SolutionRoot)\Application\Trunk\Documents\**">
+            <Output TaskParameter="Include" ItemName="AllDocumentation" />
+        </CreateItem>
+        <Copy SourceFiles="@(AllDocumentation)"
+              DestinationFiles="@(AllDocumentation ->'SetupScript\TrialBalanceCode\Documentation\%(RecursiveDir)%(Filename)%(Extension)')"
+              ContinueOnError="true" 
+              />
+        
+        <!-- Now build the installer -->
+        <Exec Command='SetupScript\Include\ISCC.exe "SetupScript\TrialBalance.iss"' />
+        <CreateItem Include="SetupScript\Output\TrialBalanceSetup.exe">
+            <Output TaskParameter="Include" ItemName="InstallerFiles" />
+        </CreateItem>
+        <Copy SourceFiles="@(InstallerFiles)"
+              DestinationFiles="@(InstallerFiles ->'$(DropLocation)\$(BuildNumber)\%(RecursiveDir)%(Filename)%(Extension)')"
+              ContinueOnError="true" 
+              />
+
+        <!-- Publish the build -->
+        <Message Text="Publishing build to http://www.trialbalance.net.au/Builds.aspx" />
+
+        <!-- Upload the Source Code -->
+        <UploadManagedFileTask 
+            Username="BuildPublisher" 
+            Password="a!2sd#4f"
+            ContentType="application/zip"
+            FilePath="$(DropLocation)\$(BuildNumber)\TrialBalance-$(BuildNumber)-Source.zip"
+            FileName="TrialBalance-$(CustomVersion)-Source.zip"
+            >
+            <Output TaskParameter="Url" PropertyName="SourceCodeUrl" />
+        </UploadManagedFileTask>
+
+        <!-- Upload the Installer -->
+        <UploadManagedFileTask 
+            Username="BuildPublisher" 
+            Password="a!2sd#4f"
+            ContentType="application/octet-stream"
+            FilePath="$(DropLocation)\$(BuildNumber)\TrialBalanceSetup.exe"
+            FileName="TrialBalanceSetup-$(CustomVersion).exe"
+            >
+            <Output TaskParameter="Url" PropertyName="InstallerUrl" />
+        </UploadManagedFileTask>
+
+        <!-- Publish the ClickOnce files --><!--
+        <MSBuild 
+                Projects="@(ClickOnceProjects)"
+                Targets="Publish"
+                Properties="ApplicationVersion=$(CustomVersion);PublishDir=$(DropLocation)\$(BuildNumber)\Published\"
+            />
+
+        <CreateItem Include="$(DropLocation)\$(BuildNumber)\Published\**">
+            <Output TaskParameter="Include" ItemName="FilesPublishedViaClickOnce" />
+        </CreateItem>
+
+        <UploadUnmanagedFileTask
+                Username="BuildPublisher" 
+                Password="a!2sd#4f"
+                LocalFilePaths="@(FilesPublishedViaClickOnce)"
+                RemoteVirtualFilePaths="@(FilesPublishedViaClickOnce -> '/Data/ClickOnce/$(CustomVersion)/%(RecursiveDir)%(Filename)%(Extension)')"
+            />-->
+
+        <!-- Now publish the build information -->
+        <!-- ClickOnceUrl="http://download.trialbalance.net.au/Data/ClickOnce/$(CustomVersion)/TrialBalance.application" -->
+        <UploadBuildTask
+            Username="BuildPublisher" 
+            Password="a!2sd#4f"
+            SourceCodeUrl="$(SourceCodeUrl)"
+            InstallerUrl="$(InstallerUrl)"
+            ReleaseNotesFilePath="$(SolutionRoot)\Application\Trunk\Documents\Release Notes.txt" 
+            Version="$(CustomVersion)"
+            BuildNumber="$(BuildNumber)"
+            BuildStatus="Unstable"
+            IsPublic="true"
+            IsSuccessful="true" 
+            />
+    </Target>
+
+</Project>

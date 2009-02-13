@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<ReadifyMSBuildTasksPath Condition="'$(ReadifyMSBuildTasksPath)' == ''">.\</ReadifyMSBuildTasksPath>
+		<ReadifyLib>$(ReadifyMSBuildTasksPath)\Readify.Useful.MsBuild.Tasks.dll</ReadifyLib>
+	</PropertyGroup>
+	<UsingTask AssemblyFile="$(ReadifyLib)" TaskName="Readify.Useful.MsBuild.Tasks.RemoveSourceCodeControlBindingsTask" />
+</Project>

@@ -1,0 +1,18 @@
+<UserControl x:Class="PaulStovell.TrialBalance.UserInterface.Validation.ErrorMessageList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:tbv="clr-namespace:PaulStovell.TrialBalance.UserInterface.Validation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Name="_this">
+	<UserControl.Resources>
+		<DataTemplate x:Key="Local_ErrorMessageTemplate">
+			<StackPanel Orientation="Horizontal">
+				<Image Source="{StaticResource Image_Warning}" Width="16" Height="16" Margin="6" />
+				<TextBlock Text="{Binding Path=ErrorMessage}" Foreground="DarkOrange" Margin="3" />
+			</StackPanel>
+		</DataTemplate>
+	</UserControl.Resources>
+	
+	<ItemsControl x:Name="_errorListItemControl" Focusable="False" ItemTemplate="{StaticResource Local_ErrorMessageTemplate}">
+		
+	</ItemsControl>
+</UserControl>

@@ -1,0 +1,7 @@
+To make this work as an "include" rather than having to install them, I changed MSBuild.Community.Tasks.targets so that the property:
+
+<MSBuildCommunityTasksPath [...]>$([...])[....]</MSBuildCommunityTasksPath>
+
+Became:
+
+<MSBuildCommunityTasksPath [...]>.\</MSBuildCommunityTasksPath>

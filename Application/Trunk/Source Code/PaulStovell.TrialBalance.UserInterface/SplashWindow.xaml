@@ -1,0 +1,43 @@
+﻿<Window 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:custom="clr-namespace:PaulStovell.TrialBalance.UserInterface" 
+    xmlns:tbc="clr-namespace:PaulStovell.TrialBalance.UserInterface.Controls" 
+    Width="650" 
+    Height="380"
+    Title="TrialBalance"
+    WindowStartupLocation="CenterScreen"
+    x:Class="PaulStovell.TrialBalance.UserInterface.SplashWindow"
+    Icon="{StaticResource Image_ApplicationIcon}"
+    Background="White"
+    >
+
+    <Border BorderBrush="#999999" BorderThickness="1" Padding="0">
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+
+            <tbc:CommandLink 
+                Click="NewFileCommand_Clicked" 
+                Margin="7"  
+                CommandText="Create a new workbook..." 
+                Description="Begin keeping records for a new business." />
+
+            <tbc:CommandLink 
+                Click="OpenFileCommand_Clicked" 
+                Margin="7"  
+                CommandText="Open an old workbook..." 
+                Description="Continue keeping records for a previous business." />
+
+            <tbc:CommandLink 
+                Click="CloseApplicationCommand_Clicked" 
+                Margin="7"  
+                CommandText="Exit application..." 
+                Description="Quit this neat program?" />
+
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#999999">
+                Copyright © Paul Stovell 2006. All rights reserved.
+            </Label>
+        </StackPanel>
+
+    </Border>
+</Window>

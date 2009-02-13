@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Workbook" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Workbook.cs</FileName>
+      <HashCode>0AIAQAAwCAAkDAQAjAAgBAhAKDAIIAJEISMOAAQCkiI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Account" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Account.cs</FileName>
+      <HashCode>AACAIIAAgAAgAAQEAgAAAAYAAAoAAAQAAQAAAQCAIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Asset" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Asset.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Balance" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Balance.cs</FileName>
+      <HashCode>AIAgAAAAAAAACAAFwAEgAAAAEAAAAIAAQAAAAAEAAiA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.CreditAccount" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>CreditAccount.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.DataProvider" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataProvider.cs</FileName>
+      <HashCode>AACIQAAAACBAABAAgAAgAAAgABAAMABIAUAkAQgEwgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.DebitAccount" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DebitAccount.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.ChangeCoordinator&lt;T&gt;" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ChangeCoordinator.cs</FileName>
+      <HashCode>AAAAAIABIAAAgAAAAhAAAAAAAAAAAAAAQICCgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Equity" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Equity.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Expense" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Expense.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Liability" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Liability.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Period" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Period.cs</FileName>
+      <HashCode>AAAAAAAAAAAgIAAAAAAAAAJgAAAAAAIABAAAAkAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Revenue" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Revenue.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAKAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.StandardAccountingObject" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>StandardAccountingObject.cs</FileName>
+      <HashCode>QgAAAAAAgAAAAAAUABAAAAAAAAAAAACIAggAAAJAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.Transaction" Collapsed="true">
+    <Position X="13.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Transaction.cs</FileName>
+      <HashCode>ABAAAAAAgAAAQAwABAAAAAAgAAEAAAABAQAgAAAAIEA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.TransactionCollection" Collapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>TransactionCollection.cs</FileName>
+      <HashCode>AEIAAAAAAAAEABAAKAAAhAQQkAAAABIEAEAAAAAUAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.ChangeCoordinatorChangesPushingEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ChangeCoordinatorChangesPushingEventArgs.cs</FileName>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaulStovell.TrialBalance.DomainModel.ChangeCoordinatorChangesPushedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ChangeCoordinatorChangesPushedEventArgs.cs</FileName>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.AccountType" Collapsed="true">
+    <Position X="16.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>AccountType.cs</FileName>
+      <HashCode>AAAAAAAAAAACAAAAAACAAAAAAAAAAAAACACgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.AssetCategory" Collapsed="true">
+    <Position X="18" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>AssetCategory.cs</FileName>
+      <HashCode>AAAAAAAAAIAAAAAAAACAAAAAABAAAAEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.BalanceType" Collapsed="true">
+    <Position X="19.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BalanceType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.ExpenseCategory" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ExpenseCategory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAAACAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.LiabilityCategory" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>LiabilityCategory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.PeriodLength" Collapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>PeriodLength.cs</FileName>
+      <HashCode>AABAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PaulStovell.TrialBalance.DomainModel.RevenueCategory" Collapsed="true">
+    <Position X="16.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RevenueCategory.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="PaulStovell.TrialBalance.DomainModel.ChangeCoordinatorChangesPushingEventHandler&lt;T&gt;" Collapsed="true">
+    <Position X="18" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ChangeCoordinatorChangesPushingEventArgs.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="PaulStovell.TrialBalance.DomainModel.ChangeCoordinatorChangesPushedEventHandler&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ChangeCoordinatorChangesPushedEventArgs.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Delegate>
+</ClassDiagram>

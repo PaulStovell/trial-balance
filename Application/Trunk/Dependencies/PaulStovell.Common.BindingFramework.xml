@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaulStovell.Common.BindingFramework</name>
+    </assembly>
+    <members>
+        <member name="T:PaulStovell.Common.BindingFramework.DomainObject">
+            <summary>
+            This class provides a number of data binding, validation and asynchronous task processing 
+            that all domain objects will inherit.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.BindingFramework.IValidateable">
+            <summary>
+            Implemented by components that can be validated.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.IValidateable.GetValidationErrors">
+            <summary>
+            Gets the current validation errors on this object.
+            </summary>
+            <returns>An array of validation errors.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.GetBrokenRules">
+            <summary>
+            Validates all rules on this domain object, returning a list of the broken rules.
+            </summary>
+            <returns>A read-only collection of rules that have been broken.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.GetValidationErrors">
+            <summary>
+            Gets a strongly typed collection of current validation errors on this domain object.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.GetBrokenRules(System.String)">
+            <summary>
+            Validates all rules on this domain object for a given property, returning a list of the broken rules.
+            </summary>
+            <param name="property">The name of the property to check for. If null or empty, all rules will be checked.</param>
+            <returns>A read-only collection of rules that have been broken.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.CreateRules">
+            <summary>
+            Override this method to create your own rules to validate this business object. These rules must all be met before 
+            the business object is considered valid enough to save to the data store.
+            </summary>
+            <returns>A collection of rules to add for this business object.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.AssertCanEdit">
+            <summary>
+            Asserts that the object is not in a read-only state. If the object is in a read-only state, an AccessViolationException
+            will be thrown.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.CleanString(System.String)">
+            <summary>
+            Cleans a string by ensuring it isn't null and trimming it.
+            </summary>
+            <param name="s">The string to clean.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raises the PropertyChanged event.
+            </summary>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.NotifyChanged(System.ComponentModel.PropertyChangedEventArgs[])">
+            <summary>
+            A helper method that sets the IsDirty flag and also raises the PropertyChanged event for a property.
+            </summary>
+            <param name="changedProperties">The names of the properties that changed.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.DomainObject.CopyTo(System.Object)">
+            <summary>
+            Copies the properties of this object to those of a new object. 
+            </summary>
+            <param name="targetObject">The object to copy to.</param>
+        </member>
+        <member name="E:PaulStovell.Common.BindingFramework.DomainObject.PropertyChanged">
+            <summary>
+            Occurs when any properties are changed on this object.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.DomainObject.IsDirty">
+            <summary>
+            Gets or sets a value indicating whether or not this domain object is dirty and has unsaved changes.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.DomainObject.IsValid">
+            <summary>
+            Gets a value indicating whether or not this domain object is valid. 
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.DomainObject.Error">
+            <summary>
+            Gets an error message indicating what is wrong with this domain object. The default is an empty string ("").
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.DomainObject.IsReadOnly">
+            <summary>
+            Gets or sets whether or not this domain object is read-only. The default is false. When the domain object is read-only, 
+            any attempt to change properties on the object will raise an AccessViolationException.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.DomainObject.Item(System.String)">
+            <summary>
+            Gets the error message for the property with the given name.
+            </summary>
+            <param name="propertyName">The name of the property whose error message to get.</param>
+            <returns>The error message for the property.  If there are no errors, the result is null.</returns>
+        </member>
+        <member name="T:PaulStovell.Common.BindingFramework.Rule">
+            <summary>
+            An abstract class that contains information about a rule as well as a method to validate it.
+            </summary>
+            <remarks>
+            This class is primarily designed to be used on a domain object to validate a business rule. In most cases, you will want to use the 
+            concrete class SimpleRule, which just needs you to supply a delegate used for validation. For custom, complex business rules, you can 
+            extend this class and provide your own method to validate the rule.
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.Rule.#ctor(System.String,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="propertyName">The name of the property the rule is based on. This may be blank if the rule is not for any specific property.</param>
+            <param name="brokenDescription">A description of the rule that will be shown if the rule is broken.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.Rule.ValidateRule(PaulStovell.Common.BindingFramework.DomainObject)">
+            <summary>
+            Validates that the rule has been followed.
+            </summary>
+            <param name="domainObject">The domain object to validate.</param>
+            <returns>True if the rule has been followed, otherwise false.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.Rule.ToString">
+            <summary>
+            Gets a string representation of this rule.
+            </summary>
+            <returns>A string containing the description of the rule.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.Rule.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. System.Object.GetHashCode()
+            is suitable for use in hashing algorithms and data structures like a hash
+            table.
+            </summary>
+            <returns>A hash code for the current rule.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.Rule.Description">
+            <summary>
+            Gets descriptive text about this broken rule.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.Rule.PropertyName">
+            <summary>
+            Gets the name of the property the rule belongs to.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.BindingFramework.SimpleRuleDelegate">
+            <summary>
+            A delegate used for validation callbacks for SimpleRules.
+            </summary>
+            <returns>True if the rule has been followed, or false if it has been broken.</returns>
+            <remarks>
+            Usage:
+            <code>
+                this.Rules.Add(new SimpleRule("Name", "The customer name must be at least 5 letters long.", delegate { return this.Name &gt; 5; } ));
+            </code>
+            </remarks>
+        </member>
+        <member name="T:PaulStovell.Common.BindingFramework.SimpleRule">
+            <summary>
+            A class to define a simple rule, using a delegate for validation.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.SimpleRule.#ctor(System.String,System.String,PaulStovell.Common.BindingFramework.SimpleRuleDelegate)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="propertyName">The name of the property this rule validates for. This may be blank.</param>
+            <param name="brokenDescription">A description message to show if the rule has been broken.</param>
+            <param name="ruleDelegate">A delegate that takes no parameters and returns a boolean value, used to validate the rule. The delegate should return true if the rule has been followed, or false if it has not.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.SimpleRule.ValidateRule(PaulStovell.Common.BindingFramework.DomainObject)">
+            <summary>
+            Validates that the rule has not been broken.
+            </summary>
+            <param name="domainObject">The domain object being validated.</param>
+            <returns>True if the rule has not been broken, or false if it has.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.SimpleRule.RuleDelegate">
+            <summary>
+            Gets or sets the delegate used to validate this rule.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.BindingFramework.ValidationError">
+            <summary>
+            Encapsulates an error in validation.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindingFramework.ValidationError.#ctor(System.String,System.String[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="errorMessage">The error message to display to the user.</param>
+            <param name="propertyNames">A list of property names involved in the validation failure.</param>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.ValidationError.PropertyNames">
+            <summary>
+            Gets or sets a list of property names involved in the validation failure.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindingFramework.ValidationError.ErrorMessage">
+            <summary>
+            Gets or sets the error message to display to the user.
+            </summary>
+        </member>
+    </members>
+</doc>

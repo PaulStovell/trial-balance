@@ -1,0 +1,121 @@
+<tb:WizardPage x:Class="PaulStovell.TrialBalance.UserInterface.WorkbookDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:tb="clr-namespace:PaulStovell.TrialBalance.UserInterface"
+	xmlns:tbv="clr-namespace:PaulStovell.TrialBalance.UserInterface.Validation"
+	xmlns:tbp="clr-namespace:PaulStovell.TrialBalance.UserInterface.Providers"
+	xmlns:tbc="clr-namespace:PaulStovell.TrialBalance.UserInterface.Converters"
+    xmlns:kmdc="clr-namespace:Microsoft.Samples.KMoore.WPFSamples.DateControls;assembly=Microsoft.Samples.KMoore.WPFSamples"
+	Title="Workbook Details"
+	NextButtonText="Save"
+    x:Name="_this"
+	IsNextEnabled="{Binding ElementName=_errorProvider, Path=IsValid}"
+	>
+	<ScrollViewer HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+		<DockPanel LastChildFill="True">
+
+			<tbv:ErrorProvider x:Name="_errorProvider"
+                               DockPanel.Dock="Top">
+				<StackPanel Margin="7">
+					<Grid Margin="7">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.Column="0"
+								   Grid.Row="0"
+								   Margin="0,11.5,7,0"
+								   Style="{StaticResource Text_DescriptionLabel}"
+								   VerticalAlignment="Top">Business Name:</TextBlock>
+						<TextBox x:Name="_accountNumberTextBox"
+								 Grid.Column="1"
+								 Grid.Row="0"
+								 HorizontalAlignment="Left"
+								 Width="200"
+								 Margin="3.5" 
+								 tbp:ErrorMessageProvider.ErrorProvider="{Binding ElementName=_errorProvider}" 
+								 tbp:ErrorMessageProvider.ErrorProperty="BusinessName"
+								 Text="{Binding Path=BusinessName, UpdateSourceTrigger=PropertyChanged}" 
+							/>
+
+						<TextBlock Grid.Column="0"
+								   Grid.Row="1"
+								   Margin="0,11.5,7,0"
+								   Style="{StaticResource Text_DescriptionLabel}"
+								   VerticalAlignment="Top">Legal Name:</TextBlock>
+						<TextBox Grid.Column="1"
+								 Grid.Row="1"
+								 HorizontalAlignment="Left"
+								 Width="200"
+								 Margin="3.5"
+								 Text="{Binding Path=LegalName, UpdateSourceTrigger=PropertyChanged}"
+								 tbp:ErrorMessageProvider.ErrorProvider="{Binding ElementName=_errorProvider}" 
+								 tbp:ErrorMessageProvider.ErrorProperty="LegalName" />
+
+
+						<TextBlock Grid.Column="0"
+								   Grid.Row="2"
+								   Margin="0,11.5,7,0"
+								   Style="{StaticResource Text_DescriptionLabel}"
+								   VerticalAlignment="Top">User Name:</TextBlock>
+						<TextBox Grid.Column="1"
+								 Grid.Row="2"
+								 HorizontalAlignment="Left"
+								 Width="200"
+								 Margin="3.5"
+								 Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}"
+								 tbp:ErrorMessageProvider.ErrorProvider="{Binding ElementName=_errorProvider}" 
+								 tbp:ErrorMessageProvider.ErrorProperty="Username" />
+
+						<TextBlock Grid.Column="0"
+								   Grid.Row="3"
+								   Margin="0,11.5,7,0"
+								   Style="{StaticResource Text_DescriptionLabel}"
+								   VerticalAlignment="Top"
+								   >Period Length:</TextBlock>
+						<ComboBox Grid.Column="1"
+								  Grid.Row="3"
+								  HorizontalAlignment="Left"
+								  Width="200"
+								  Margin="3.5"
+								  ItemsSource="{Binding ElementName=_this, Path=AvailablePeriodLengths}"
+								  DisplayMemberPath="DisplayText"
+								  SelectedValuePath="Value" 
+								  SelectedValue="{Binding Path=PeriodLength}" 
+								  tbp:ErrorMessageProvider.ErrorProvider="{Binding ElementName=_errorProvider}" 
+								  tbp:ErrorMessageProvider.ErrorProperty="PeriodLength"
+                              />
+
+                        <TextBlock Grid.Column="0"
+								   Grid.Row="4"
+								   Margin="0,11.5,7,0"
+								   Style="{StaticResource Text_DescriptionLabel}"
+								   VerticalAlignment="Top"
+								   >Example start date:</TextBlock>
+                        <kmdc:DatePicker Grid.Column="1"
+								  Grid.Row="4"
+								  HorizontalAlignment="Left"
+								  Width="200"
+								  Margin="3.5"
+                                  />
+
+					</Grid>
+					<tbv:ErrorMessageList Margin="7"  ErrorProvider="{Binding ElementName=_errorProvider}" />
+				</StackPanel>
+			</tbv:ErrorProvider>
+		</DockPanel>
+	</ScrollViewer>
+</tb:WizardPage>

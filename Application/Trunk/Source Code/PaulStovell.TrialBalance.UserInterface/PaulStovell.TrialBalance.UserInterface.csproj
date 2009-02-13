@@ -1,0 +1,311 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>PaulStovell.TrialBalance.UserInterface</RootNamespace>
+    <AssemblyName>TrialBalance</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <!-- Most people will use Publish dialog in Visual Studio to increment this -->
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <ManifestCertificateThumbprint>A6C4541D15F527ACA1D499FD42FF918F3D295894</ManifestCertificateThumbprint>
+    <ManifestKeyFile>TrialBalance.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>Publish\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://clickonce.trialbalance.net.au/TrialBalance/Latest/</InstallUrl>
+    <SupportUrl>http://www.trialbalance.net.au/</SupportUrl>
+    <ProductName>TrialBalance</ProductName>
+    <PublisherName>Paul Stovell</PublisherName>
+    <WebPage>Publish.htm</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationExtension>.application</ApplicationExtension>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Samples.KMoore.WPFSamples, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\Microsoft.Samples.KMoore.WPFSamples.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SDK.Samples.VistaBridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\Microsoft.SDK.Samples.VistaBridge.dll</HintPath>
+    </Reference>
+    <Reference Include="PaulStovell.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\PaulStovell.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PaulStovell.Common.BindingFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\PaulStovell.Common.BindingFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.IdentityModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml" />
+    <Compile Include="Application.xaml.cs">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountDetailsDialog.cs" />
+    <Compile Include="AccountDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountGroupControl.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountGroupControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountTypePage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseWindow.cs" />
+    <Compile Include="Controls\CommandLink.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CommandLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\AccountConverter.cs" />
+    <Compile Include="Converters\BalanceColumnNumberConverter.cs" />
+    <Compile Include="Converters\DecimalConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="GlassHelper.cs" />
+    <Compile Include="Providers\StatusMessageProvider.cs" />
+    <Compile Include="Providers\ErrorMessageProvider.cs" />
+    <Compile Include="Providers\DescriptionProvider.cs" />
+    <Compile Include="Converters\BalanceConverter.cs" />
+    <Compile Include="Converters\AccountTypeImageConverter.cs" />
+    <Compile Include="Converters\NumberConverter.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="AccountLedgerWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountLedgerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SplashWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>TransactionDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ErrorMessageList.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ErrorMessageList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ErrorProvider.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="WizardPage.cs" />
+    <Compile Include="WizardPageReturnEventArgs.cs" />
+    <Compile Include="WizardDialog.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>WizardDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkbookDetailsDialog.cs" />
+    <Compile Include="WorkbookDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>WorkbookDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AccountDetailsPage.xaml" />
+    <Page Include="AccountGroupControl.xaml" />
+    <Page Include="AccountLedgerWindow.xaml" />
+    <Page Include="AccountTypePage.xaml" />
+    <Page Include="Controls\CommandLink.xaml" />
+    <Page Include="MainWindow.xaml" />
+    <Page Include="Resources\BrushResources.xaml" />
+    <Page Include="Resources\ControlResources.xaml" />
+    <Page Include="Resources\ConverterResources.xaml" />
+    <Page Include="Resources\ImageResources.xaml" />
+    <Page Include="Resources\TextResources.xaml" />
+    <Page Include="SplashWindow.xaml" />
+    <Page Include="TransactionDetailsPage.xaml" />
+    <Page Include="Validation\ErrorMessageList.xaml" />
+    <Page Include="WizardDialog.xaml" />
+    <Page Include="WorkbookDetailsPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PaulStovell.TrialBalance.DomainModel\PaulStovell.TrialBalance.DomainModel.csproj">
+      <Project>{6353F498-6CFD-4202-B7EF-8BF311A4D48B}</Project>
+      <Name>PaulStovell.TrialBalance.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PaulStovell.TrialBalance.UserInterfaceProcesses\PaulStovell.TrialBalance.UserInterfaceProcesses.csproj">
+      <Project>{046B0331-6CCA-46AD-A913-4C6A21F33D96}</Project>
+      <Name>PaulStovell.TrialBalance.UserInterfaceProcesses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TrialBalance.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\52.png" />
+    <Resource Include="Resources\Images\add.png" />
+    <Resource Include="Resources\Images\asset.png" />
+    <Resource Include="Resources\Images\back.png" />
+    <Resource Include="Resources\Images\Back3.png" />
+    <Resource Include="Resources\Images\bullet_ball_glass_blue.png" />
+    <Resource Include="Resources\Images\bullet_ball_glass_green.png" />
+    <Resource Include="Resources\Images\bullet_ball_glass_red.png" />
+    <Resource Include="Resources\Images\bullet_ball_glass_yellow.png" />
+    <Resource Include="Resources\Images\checks.png" />
+    <Resource Include="Resources\Images\compass.png" />
+    <Resource Include="Resources\Images\delete2.png" />
+    <Resource Include="Resources\Images\disk_blue.png" />
+    <Resource Include="Resources\Images\Error.png" />
+    <Resource Include="Resources\Images\Errorshield.png" />
+    <Resource Include="Resources\Images\factory.png" />
+    <Resource Include="Resources\Images\filesave.png" />
+    <Resource Include="Resources\Images\forward.png" />
+    <Resource Include="Resources\Images\Goodshield.png" />
+    <Resource Include="Resources\Images\Help and Support.png" />
+    <Resource Include="Resources\Images\Info.png" />
+    <Resource Include="Resources\Images\Key.png" />
+    <Resource Include="Resources\Images\lightbulb_on.png" />
+    <Resource Include="Resources\Images\line_chart.png" />
+    <Resource Include="Resources\Images\moneybag_dollar.png" />
+    <Resource Include="Resources\Images\nav_left_green.png" />
+    <Resource Include="Resources\Images\nav_right_green.png" />
+    <Resource Include="Resources\Images\Padlock.png" />
+    <Resource Include="Resources\Images\percent.png" />
+    <Resource Include="Resources\Images\recycle.png" />
+    <Resource Include="Resources\Images\Refresh3.png" />
+    <Resource Include="Resources\Images\reload.png" />
+    <Resource Include="Resources\Images\Right.png" />
+    <Resource Include="Resources\Images\save.png" />
+    <Resource Include="Resources\Images\scroll.png" />
+    <Resource Include="Resources\Images\sort_descending.png" />
+    <Resource Include="Resources\Images\stopwatch.png" />
+    <Resource Include="Resources\Images\vlc.png" />
+    <Resource Include="Resources\Images\Warning.png" />
+    <Resource Include="Resources\Images\Windows Security.png" />
+    <Resource Include="Resources\Images\Write.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\branch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\index.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\book_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\books.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\briefcase2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\document_chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\hourglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\media_step_back.png" />
+    <Resource Include="Resources\Images\media_step_forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\id_card_preferences.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\application_form_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\commandlink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\TrialBalance-Account-Add.ico" />
+    <Resource Include="Resources\Images\TrialBalance-Account.ico" />
+    <Resource Include="Resources\Images\TrialBalance-Transaction-Add.ico" />
+    <Resource Include="Resources\Images\TrialBalance-Transaction.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

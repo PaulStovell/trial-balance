@@ -1,0 +1,40 @@
+<%@ Master Language="C#" AutoEventWireup="true" Codebehind="TrialBalance.master.cs"
+    Inherits="PaulStovell.TrialBalance.MainWebsite.TrialBalance" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>TrialBalance</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="page">
+            <div id="titleArea">
+                <h1>TrialBalance</h1>
+                <h2>Double-entry accounting made easy</h2>
+            </div>
+            <div id="menuArea">
+                <div id="menuAreaInsides">
+                    <span class="menuItem"><a runat="server" href="~/">Home</a></span>
+                    <span class="menuItem"><a runat="server" href="~/Builds.aspx">Download</a></span>
+                    <span class="menuItem"><a runat="server" href="~/Screenshots.aspx">Screenshots</a></span>
+                    <asp:LoginView runat="server">
+                        <LoggedInTemplate>
+                            <span class="menuItem"><asp:LoginStatus runat="server" /></span>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+            <div id="contentArea">
+                <asp:ContentPlaceHolder ID="MainContentPlaceholder" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="copyrightArea">
+                <p>
+                    Copyright &copy; <a href="http://www.paulstovell.net/">Paul Stovell</a> 2006. <br />
+                    Icons are from the wonderful <a href="http://www.famfamfam.com/lab/icons/silk/">Silk Icon set</a> by Mark James
+                </p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

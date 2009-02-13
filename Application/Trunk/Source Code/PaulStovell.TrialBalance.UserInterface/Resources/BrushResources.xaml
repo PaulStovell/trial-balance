@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <LinearGradientBrush x:Key="Brush_DefaultWindowBackground">
+        <GradientStop Offset="0" Color="#404040" />
+        <GradientStop Offset="0.6" Color="#303030" />
+    </LinearGradientBrush>
+
+    <RadialGradientBrush x:Key="Brush_ContentBackground">
+        <GradientStop Offset="0" Color="#DFE2E5" />
+        <GradientStop Offset="0.6" Color="#FFFFFF" />
+    </RadialGradientBrush>
+
+	<LinearGradientBrush x:Key="Brush_ListItemBackground" StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Color="#F1F6FB" Offset="0" />
+		<GradientStop Color="#FFFFFF" Offset="0.25" />
+		<GradientStop Color="#F1F6FB" Offset="0.75" />
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="Brush_WindowBorder" StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Color="#DDE7F5" Offset="0" />
+		<GradientStop Color="#F1F6FB" Offset="0.5" />
+		<GradientStop Color="#DDE7F5" Offset="1" />
+	</LinearGradientBrush>
+
+	<SolidColorBrush x:Key="Brush_ListItemBorder" Color="#5B84BA" />
+	
+	<!-- #DDE7F5 -->
+	<SolidColorBrush x:Key="Brush_ListItemSelectedBorder" Color="#5B81B4" />
+
+	<LinearGradientBrush x:Key="Brush_ListItemSelectedBackground" StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Color="#F1F6FB" Offset="0" />
+		<GradientStop Color="#FFFFFF" Offset="0.25" />
+		<GradientStop Color="#DDE7F5" Offset="1" />
+		<!--<GradientStop Color="#CDDCF0" Offset="1" />-->
+	</LinearGradientBrush>
+</ResourceDictionary>

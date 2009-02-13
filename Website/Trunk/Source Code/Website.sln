@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.MainWebsite", "PaulStovell.TrialBalance.MainWebsite\PaulStovell.TrialBalance.MainWebsite.csproj", "{109B5271-A1DD-4F77-B54F-4CE4D84E0712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.Website.UploadBuildTask", "PaulStovell.TrialBalance.Website.UploadBuildTask\PaulStovell.TrialBalance.Website.UploadBuildTask.csproj", "{88C89D55-7031-44CE-8527-4288FB977B43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FFF69C70-288F-4925-850A-5F2676F04656}"
+	ProjectSection(SolutionItems) = preProject
+		localtestrun.testrunconfig = localtestrun.testrunconfig
+		Website.vsmdi = Website.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.DownloadWebsite", "PaulStovell.TrialBalance.DownloadWebsite\PaulStovell.TrialBalance.DownloadWebsite.csproj", "{84B5E277-DC69-45E2-807F-CF17E25A0CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.Website.Common", "PaulStovell.TrialBalance.Website.Common\PaulStovell.TrialBalance.Website.Common.csproj", "{0114183E-B936-4E84-A53F-BEF8A5704993}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Website.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{109B5271-A1DD-4F77-B54F-4CE4D84E0712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109B5271-A1DD-4F77-B54F-4CE4D84E0712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109B5271-A1DD-4F77-B54F-4CE4D84E0712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109B5271-A1DD-4F77-B54F-4CE4D84E0712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C89D55-7031-44CE-8527-4288FB977B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C89D55-7031-44CE-8527-4288FB977B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C89D55-7031-44CE-8527-4288FB977B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C89D55-7031-44CE-8527-4288FB977B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B5E277-DC69-45E2-807F-CF17E25A0CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B5E277-DC69-45E2-807F-CF17E25A0CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B5E277-DC69-45E2-807F-CF17E25A0CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B5E277-DC69-45E2-807F-CF17E25A0CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0114183E-B936-4E84-A53F-BEF8A5704993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0114183E-B936-4E84-A53F-BEF8A5704993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0114183E-B936-4E84-A53F-BEF8A5704993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0114183E-B936-4E84-A53F-BEF8A5704993}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

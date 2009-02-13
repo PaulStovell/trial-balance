@@ -1,0 +1,83 @@
+﻿<tb:BaseWindow x:Class="PaulStovell.TrialBalance.UserInterface.AccountLedgerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tb="clr-namespace:PaulStovell.TrialBalance.UserInterface"
+        xmlns:tbv="clr-namespace:PaulStovell.TrialBalance.UserInterface.Validation"
+        Title="Ledger Window"
+        Width="800"
+        Height="600"
+        Icon="{StaticResource Image_ApplicationIcon}"
+	    Background="{StaticResource Brush_DefaultWindowBackground}"
+    >
+    <tb:BaseWindow.Resources>
+
+        <DataTemplate x:Key="Local_LedgerTransactionDataTemplate">
+            <Border Focusable="True" GotFocus="DataRow_GotFocus" LostFocus="DataRow_LostFocus">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{Binding Path=Date}"
+                    />
+
+                    <TextBox
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Path=Particulars}"
+                    />
+
+                    <TextBox
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Text="{Binding Path=AffectedAccount}"
+                        />
+
+                    <TextBox
+                        Grid.Column="3"
+                        Grid.Row="0"
+                        Text="{Binding Path=CreditBalance, Converter={StaticResource Converter_BalanceConverter}, ConverterParameter=CreditOnly}"
+                        />
+
+                    <TextBox
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Text="{Binding Path=DebitBalance, Converter={StaticResource Converter_BalanceConverter}, ConverterParameter=DebitOnly}"
+                        />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </tb:BaseWindow.Resources>
+
+
+    <DockPanel LastChildFill="True">
+        <Border 
+            BorderBrush="{x:Static SystemColors.ActiveBorderBrush}"
+            Background="White" 
+            BorderThickness="1"
+            CornerRadius="7"
+            MouseDown="SuppressMouseDown"
+            >
+
+            <ItemsControl 
+                x:Name="_transactionsItemsControl"
+                ItemTemplate="{StaticResource Local_LedgerTransactionDataTemplate}"
+                >
+
+            </ItemsControl>
+
+        </Border>
+    </DockPanel>
+</tb:BaseWindow>

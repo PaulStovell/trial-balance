@@ -1,0 +1,119 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6353F498-6CFD-4202-B7EF-8BF311A4D48B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PaulStovell.TrialBalance.DomainModel</RootNamespace>
+    <AssemblyName>PaulStovell.TrialBalance.DomainModel</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\PaulStovell.TrialBalance.DomainModel.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\PaulStovell.TrialBalance.DomainModel.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PaulStovell.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\PaulStovell.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PaulStovell.Common.BindingFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\PaulStovell.Common.BindingFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.XLinq, Version=1.0.2319.19042, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\System.Xml.XLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountEventArgs.cs" />
+    <Compile Include="AccountFactory.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="AssetCategory.cs" />
+    <Compile Include="AuditableAttribute.cs" />
+    <Compile Include="Balance.cs" />
+    <Compile Include="BalanceType.cs" />
+    <Compile Include="ChangeSet.cs" />
+    <Compile Include="Change.cs" />
+    <Compile Include="ChangeSetHistory.cs" />
+    <Compile Include="ICurrentPeriodProvider.cs" />
+    <Compile Include="PackageDataProvider\AccountXElementAdapter.cs" />
+    <Compile Include="PackageDataProvider\ChangeSetHistoryXElementAdapter.cs" />
+    <Compile Include="PackageDataProvider\PackageDataProvider.cs" />
+    <Compile Include="PackageDataProvider\TransactionXElementAdapter.cs" />
+    <Compile Include="PeriodEventArgs.cs" />
+    <Compile Include="UniqueAccountNameRule.cs" />
+    <Compile Include="ChangeCoordinatorChangesPushedEventArgs.cs" />
+    <Compile Include="CreditAccount.cs" />
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="DebitAccount.cs" />
+    <Compile Include="AccountType.cs" />
+    <Compile Include="ChangeCoordinator.cs" />
+    <Compile Include="ChangeCoordinatorChangesPushingEventArgs.cs" />
+    <Compile Include="Equity.cs" />
+    <Compile Include="Expense.cs" />
+    <Compile Include="ExpenseCategory.cs" />
+    <Compile Include="Liability.cs" />
+    <Compile Include="LiabilityCategory.cs" />
+    <Compile Include="Period.cs" />
+    <Compile Include="PeriodLength.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionCollectionView.cs" />
+    <Compile Include="Workbook.cs" />
+    <Compile Include="Revenue.cs" />
+    <Compile Include="RevenueCategory.cs" />
+    <Compile Include="AccountingDomainObject.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,60 @@
+﻿<tb:WizardPage 
+	x:Class="PaulStovell.TrialBalance.UserInterface.AccountTypePage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:tb="clr-namespace:PaulStovell.TrialBalance.UserInterface"
+	xmlns:tbv="clr-namespace:PaulStovell.TrialBalance.UserInterface.Validation"
+	xmlns:tbp="clr-namespace:PaulStovell.TrialBalance.UserInterface.Providers"
+	xmlns:tbc="clr-namespace:PaulStovell.TrialBalance.UserInterface.Controls"
+	xmlns:tbdm="clr-namespace:PaulStovell.TrialBalance.DomainModel;assembly=PaulStovell.TrialBalance.DomainModel"
+	Title="Select Account Type"
+	HasNextButton="False" 
+	x:Name="_this"
+	>
+	<ScrollViewer HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+		<StackPanel Margin="3.5">
+
+			<tbc:CommandLink 
+                Click="AccountTypeButton_Clicked"
+				Margin="3.5"
+				Tag="{x:Static tbdm:AccountType.Asset}"
+                CommandText="Create an Asset account" 
+                Description="Assets are the future economic benefits controlled by the entity as a result of past transactions or other past events." 
+				/>
+
+			<tbc:CommandLink 
+                Click="AccountTypeButton_Clicked" 
+                Margin="3.5" 
+				Tag="{x:Static tbdm:AccountType.Liability}" 
+                CommandText="Create a Liability account" 
+                Description="Liabilities are the future sacrifices of economic benefits that the entity is presently obliged to make to other entities as a result of past transactions or other past events." 
+				/>
+
+			<tbc:CommandLink 
+                Click="AccountTypeButton_Clicked" 
+                Margin="3.5" 
+				Tag="{x:Static tbdm:AccountType.Equity}"
+                CommandText="Create an Equity account" 
+                Description="Equity is the residual interest in the assets of the entity after deduction of its liabilities." 
+				/>
+
+			<tbc:CommandLink 
+                Click="AccountTypeButton_Clicked" 
+                Margin="3.5"
+				Tag="{x:Static tbdm:AccountType.Revenue}"
+                CommandText="Create a Revenue account" 
+                Description="Revenues are inflows or other enhancements, or savings in outflows, of future economic benefits in the form of increases in assets or reduction in liabilities of the entity, other than those relating to contributions by owners, that result in an increase in equity during the reporting period." 
+				/>
+
+			<tbc:CommandLink 
+                Click="AccountTypeButton_Clicked" 
+                Margin="3.5"
+				Tag="{x:Static tbdm:AccountType.Expense}"
+                CommandText="Create an Expense account" 
+                Description="Expenses are consumptions or losses of future economic benefits in the form of reductions in assets or increases in liabilities of the equity, other than those relating to distributions to owners, that result in a decrease in equity during the reporting period." 
+				/>
+			
+		</StackPanel>
+	</ScrollViewer>
+</tb:WizardPage>

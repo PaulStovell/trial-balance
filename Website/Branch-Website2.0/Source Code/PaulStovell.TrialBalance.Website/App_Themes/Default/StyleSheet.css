@@ -1,0 +1,174 @@
+﻿body 
+{
+	background: #ffffff;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 10pt;
+	background: white;
+	background-image: url(Images/PageBackground.png);
+	background-repeat: repeat-x;
+	background-position: top;
+	color: #222222;
+	margin: 21px;
+}
+
+#page 
+{
+	/*border: 1px solid #6D99CB;*/
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 900px;
+}
+
+#titleArea 
+{
+	padding: 0px;
+	margin: 10px;
+}
+
+#titleArea h1 
+{
+	font-size: 24pt;
+	font-weight: normal;
+	color: #000000;
+	margin: 7px;
+	padding: 0px;
+}
+
+#titleArea h2
+{
+	font-size: 16pt;
+	font-weight: normal;
+	color: #999999;
+	margin: 7px;
+	padding: 0px;
+}
+
+#menuArea 
+{
+	background-color: #f2f5f8;
+	height: 30px;
+	border: 1px solid #6D99CB;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+#menuAreaInsides 
+{
+	margin: 7px;
+}
+
+#sidebarArea 
+{
+	width: 300px;
+	background: #F7F7FF;
+	padding: 14px;
+	border-right: 3px solid black;
+}
+.menuItem 
+{
+	color: #285b76;
+	font-weight: normal;
+	margin-left: 14px;
+	margin-right: 14px;
+}
+
+.menuItem a
+{
+	text-decoration: none;
+}
+
+.menuItem a:hover 
+{
+	color: #8888FF;	
+	text-decoration: underline;
+}
+
+#contentArea
+{
+	margin: 0px;
+	padding: 21px;
+}
+
+#contentArea h1 
+{
+	margin: 0px;
+	padding: 0px;
+	font-size: 16pt;
+	font-weight: normal;
+	border-bottom: 1px solid #cfd7e4;
+	font-family: Verdana;
+	color: #000000;
+}
+
+#contentArea p 
+{
+	margin-top: 21px;
+	margin-bottom: 21px;
+	line-height: 150%;
+}
+
+a, a:visited, a:active
+{
+	color: #005dc3;
+}
+
+a:hover 
+{
+	color: #ffcc00;
+}
+
+.thumbnailImageContainer 
+{
+	float: right;
+	clear: none;
+}
+
+.thumbnailImage 
+{
+	margin-left: 21px;
+}
+
+a img
+{
+	border: 0px;
+}
+
+.button 
+{
+	background-color: #f2f5f8;
+	border: 1px solid #6D99CB;
+	font-family: Segoe UI, Tahoma;
+	color: #6D99CB;
+}
+
+.contentBlock 
+{
+	padding-left: 14px;
+	padding-bottom: 7px;
+}
+
+.tableBlock 
+{
+	padding-left: 7px;
+	padding-bottom: 7px;
+}
+
+#copyrightArea 
+{
+	border-top: 1px solid #cccccc;
+	text-align: center;
+	color: #aaaaaa;
+}
+
+li 
+{
+	line-height: 150%;
+}
+
+.exceptionsContainer
+{
+	border-top: 1px solid #cccccc;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #aaaaaa;
+}

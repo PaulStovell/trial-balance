@@ -1,0 +1,973 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaulStovell.Common</name>
+    </assembly>
+    <members>
+        <member name="T:PaulStovell.Common.BindableCollection`1">
+            <summary>
+            A base collection that combines the binding powers of a BindingList with the 
+            coolness of a List.
+            </summary>
+            <typeparam name="T">The type of item contained in this collection.</typeparam>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.AddRange(System.Collections.Generic.IList{`0})">
+            <summary>
+            Adds a range of items to this collection.
+            </summary>
+            <param name="items">The items to add.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.AddRange``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Adds a range of items to this collection.
+            </summary>
+            <param name="items">The items to add.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.Sort">
+            <summary>
+            Sorts the items in the collection.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Raises the CollectionChanged event. 
+            </summary>
+            <param name="e">Event arguments.</param>
+            <remarks>
+            Overridden to suppress raising the event if RaiseListChangedEvents is false. 
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.BindableCollection_ItemPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Handles any changed to items inside the collection to raise a CollectionChanged event, so that any sorting based on a property can be 
+            re-applied.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raises the PropertyChanged event. 
+            </summary>
+            <param name="e">Event arguments.</param>
+            <remarks>
+            Overridden to suppress raising the event if RaiseListChangedEvents is false. 
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.BindableCollection`1.ResetBindings">
+            <summary>
+            Causes anything bound to this list to update itself.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindableCollection`1.SortStrategy">
+            <summary>
+            Gets or sets the sorting strategy used to sort items in this collection. By default it is a 
+            bubble sort.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindableCollection`1.RaiseListChangedEvents">
+            <summary>
+            Gets or sets whether PropertyChanged or CollectionChanged events should be raised. 
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.BindableEnumerationValue">
+            <summary>
+            Represents an item in an enumeration. Use the <see cref="M:PaulStovell.Common.BindableEnumerationValue.BuildCollection(System.Enum)"/> method to create a bindable collection of 
+            items from a given enumeration.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindableEnumerationValue.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.BindableEnumerationValue.#ctor(System.String,System.Object)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="displayText">The text that will be shown for the item.</param>
+            <param name="value">The value of the item.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BindableEnumerationValue.BuildCollection(System.Enum)">
+            <summary>
+            Creates a <see cref="T:BindableCollection[T]"/> of <see cref="T:BindableEnumerationValue"/> from a given 
+            enumeration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PaulStovell.Common.BindableEnumerationValue.DisplayText">
+            <summary>
+            Gets the text that will be shown for the item.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.BindableEnumerationValue.Value">
+            <summary>
+            Gets the value of the item.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.BubbleSortStrategy`1">
+            <summary>
+            A basic list sorting strategy using a bubble sort routine. 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:PaulStovell.Common.ISortStrategy`1">
+            <summary>
+            A base interface for list sorting strategies.
+            </summary>
+            <typeparam name="T">The type of item contained in the collection that is being sorted.</typeparam>
+        </member>
+        <member name="M:PaulStovell.Common.ISortStrategy`1.Sort(System.Collections.Generic.IList{`0},System.Comparison{`0})">
+            <summary>
+            Sorts the collection. 
+            </summary>
+            <param name="items">The items contained in the collection.</param>
+            <param name="comparrison">A comparrison delegate invoked on each item.</param>
+        </member>
+        <member name="M:PaulStovell.Common.BubbleSortStrategy`1.Sort(System.Collections.Generic.IList{`0},System.Comparison{`0})">
+            <summary>
+            Sorts the collection using a comparrison delegate.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.CipherAlphabet">
+            <summary>
+            An alphabet used to encipher or decipher a message. Most uses should use CipherAlphabet.Default
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.CipherAlphabet.#ctor">
+            <summary>
+            Constructor
+            </summary>dseslkhdkjdh
+        </member>
+        <member name="M:PaulStovell.Common.CipherAlphabet.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="alphabet">The alphabet to use. Try and include all possible characters that may be used</param>
+        </member>
+        <member name="M:PaulStovell.Common.CipherAlphabet.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="alphabet">The alphabet to use. Try and include all possible characters that may be used</param>
+            <param name="nulls">Characters inserted as nulls on enciphering and ignored when deciphering. 
+            Used to confuse attackers</param>
+        </member>
+        <member name="P:PaulStovell.Common.CipherAlphabet.Alphabet">
+            <summary>
+            The alphabet as a string
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.CipherAlphabet.Nulls">
+            <summary>
+            Characters to insert as nulls. These characters MAY NOT appear in the Alphabet
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.CipherAlphabet.IsValid">
+            <summary>
+            Determines whether the CipherAlphabet is valid. Alphabets are invalid if any null characters
+            also exist in the enciphering alphabet, as this may cause confusion.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.CipherAlphabet.Default">
+            <summary>
+            The standard cipher alphabet to use for all encryptions. This should never change as it may break
+            existing applications
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.DisposableMouseCursor">
+            <summary>
+            An <see cref="T:IDisposable"/> class used to make changing and reverting the current <see cref="T:Cursor"/> easy 
+            by wrapping it in a using block.
+            </summary>
+            <remarks>
+            <example>
+            using (new DisposableMouseCursor()) {
+                // Do long running task here...
+            }
+            </example>
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.DisposableMouseCursor.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.DisposableMouseCursor.#ctor(System.Windows.Forms.Cursor)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="cursor">The <see cref="T:Cursor"/> to make current.</param>
+        </member>
+        <member name="M:PaulStovell.Common.DisposableMouseCursor.Dispose">
+            <summary>
+            Changes the current <see cref="T:Cursor"/> back to what it was previously.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.FilterView`1">
+            <summary>
+            A class used for data binding that stores a list of items and allows them to be filtered.
+            </summary>
+            <typeparam name="T">The type of items stored by the collection.</typeparam>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.FilterItem(`0)">
+            <summary>
+            When overriden in a derrived class, filters a given item to determine if it should be included in this FilterView.
+            </summary>
+            <param name="item">The item to filter.</param>
+            <returns>True if the item should be included in the collection, otherwise false.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.Rebuild(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Rebuilds the list of items currently included in the filter given a list of items to start with.
+            </summary>
+            <param name="originalItems"></param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.Reset">
+            <summary>
+            Resets the list of items in the filter.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.ProcessChanges(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Processes a given list of changes to an underlying collection.
+            </summary>
+            <param name="e">A <see cref="T:NotifyCollectionChangedEventArgs"/> that contains the list of changes made to the collection.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.Sort">
+            <summary>
+            Sorts the list of filtered items.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.GetEnumerator">
+            <summary>
+            Gets an enumerator over the filtered items in this FilterView.
+            </summary>
+            <returns>An enumerator containing the items in this FilterView.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets an enumerator over the filtered items in this FilterView.
+            </summary>
+            <returns>An enumerator containing the items in this FilterView.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raises the PropertyChanged event.
+            </summary>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Raises the CollectionChanged event.
+            </summary>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.ClearInnerList">
+            <summary>
+            Clears all of the items from this FilterView without raising a CollectionChanged event.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.RemoveItemFromInnerList(`0)">
+            <summary>
+            Removes a given item from this FilterView without raising a CollectionChanged event.
+            </summary>
+            <param name="item">The item to remove.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.AddItemToInnerList(`0)">
+            <summary>
+            Adds a given item to this FilterView without raising a CollectionChanged event.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.ItemPropertyChanged(`0,System.String)">
+            <summary>
+            Called when a property on one of the filtered items changes.
+            </summary>
+            <param name="item">The item whos property changed.</param>
+            <param name="e">The name of the property that changed.</param>
+        </member>
+        <member name="M:PaulStovell.Common.FilterView`1.Contains(`0)">
+            <summary>
+            Gets a value indicating whether or not this FilterView contains a given item.
+            </summary>
+            <param name="item">The item to look for.</param>
+            <returns>True if this FilterView contains the given item, otherwise false.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.SortComparrison">
+            <summary>
+            Gets or sets a comparrison delegate to use to sort the list. If this delegate is set, the list will automatically be sorted
+            whenever the items in it change.
+            </summary>
+        </member>
+        <member name="E:PaulStovell.Common.FilterView`1.PropertyChanged">
+            <summary>
+            Occurs when a property on this FilterView changes.
+            </summary>
+        </member>
+        <member name="E:PaulStovell.Common.FilterView`1.CollectionChanged">
+            <summary>
+            Occurs when one of more of the items filtered by this FilterView change.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.Count">
+            <summary>
+            Gets the count of filtered items in this FilterView.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.IsSynchronized">
+            <summary>
+            Gets a value indicating whether or not this FilterView is synchronised.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.SyncRoot">
+            <summary>
+            Gets an object used as the SyncRoot for this FilterView.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.Item(System.Int32)">
+            <summary>
+            Gets the item from this FilterView at a given index.
+            </summary>
+            <param name="index">The index of the item to retrieve.</param>
+            <returns>The item.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.FilterView`1.AutoSort">
+            <summary>
+            Gets or sets a value indicating whether items in this collection are automatically sorted whenever 
+            the underlying collection changes. This can come at a minor performance cost.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.GenericDelegate`1">
+            <summary>
+            A generic delegate for an object type of <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of object passed as an argument to this delegate.</typeparam>
+            <param name="item">The item passed as an argument to this delegate.</param>
+        </member>
+        <member name="T:PaulStovell.Common.GenericEventHandler`1">
+            <summary>
+            Handles any event that throws a single item of any type.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">Generic event arguments.</param>
+        </member>
+        <member name="T:PaulStovell.Common.GenericEventArgs`1">
+            <summary>
+            Generic event arguments for an event with an item of any type.
+            </summary>
+            <typeparam name="T">The type of item contained in the event. This could be a business object,
+            a string, an exception, anything.</typeparam>
+        </member>
+        <member name="M:PaulStovell.Common.GenericEventArgs`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.GenericEventArgs`1.#ctor(`0)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.GenericEventArgs`1.Item">
+            <summary>
+            The item involved in the event.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.PoolCallback`1">
+            <summary>
+            A delegate used by the generic Pool class for callbacks. When you request a pooled item from a 
+            Pool, you have the option of supplying a callback routine that will be called if no object is available
+            as soon as one does become available.
+            </summary>
+            <typeparam name="T">The type of item that the pool will call back with.</typeparam>
+            <param name="item">The item that the pool will call back with.</param>
+        </member>
+        <member name="T:PaulStovell.Common.Pool`1">
+            <summary>
+            A generic class that contains a pool ofitems. 
+            </summary>
+            <remarks>
+            This class was originally written by Darren Neimke (www.markitup.com) and modified by me to suit .NET 2.0 and 
+            to add the callback feature. Darren's original code can be downloaded from:
+            http://projectdistributor.net/Projects/Project.aspx?projectId=207
+            Many thanks Darren!
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="poolSize">The maximum number of items that can exist in the pool.</param>
+            <param name="reusePoolItems">
+            Indicates whether items in the pool should be re-used after being 
+            assigned to someone. Setting this to false isn't really "pooling" exactly, though it does keep 
+            a limit on the number of instances at any one time.
+            </param>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.GetPooledItem">
+            <summary>
+            Attempts to retrieve a pooled object from the pool.
+            </summary>
+            <returns>A pooled object, or null if no object is available from the pool.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.GetPooledItem(PaulStovell.Common.PoolCallback{`0})">
+            <summary>
+            Attempts to retrieve a pooled object from the pool. If no pooled objects are available at the time this 
+            method is called, you can specify a callback delegate which will be executed as soon as an object in the 
+            pool is available. In other words, "Leave a message, and we'll get back to you!".
+            </summary>
+            <param name="notAvailableCallback">
+            If no pooled objects are available at the time this 
+            method is called, you can specify a callback delegate which will be executed as soon as an object in the 
+            pool is available. In other words, "Leave a message, and we'll get back to you!".
+            </param>
+            <returns>A pooled object, or null if no object is available from the pool.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.ReleasePooledItem(`0)">
+            <summary>
+            Releases an item from the pool.
+            </summary>
+            <param name="pooledItem">The item to release.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.Scavenge">
+            <summary>
+            A helper method to attempt to retrieve a pooled item from a lease that may have expired. In most cases we shouldn't
+            need to do this (people should be nice enough to release our objects back to us). 
+            </summary>
+            <returns>Whether or not the scavange operation was successful.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.Pool`1.CreateLease(`0)">
+            <summary>
+            A helper method to create a new lease on an object.
+            </summary>
+            <returns>The object to create the lease for.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.Pool`1.FreeQueue">
+            <summary>
+            Gets the items in the pool that are free to be used.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.Pool`1.CallbackQueue">
+            <summary>
+            A queue of calls we need to return as soon as an object becomes available. This queue is used
+            in the case where there are more requests for a pooled object than are available. 
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.Pool`1.ActiveQueue">
+            <summary>
+            Gets the items from the pool that are currently being used.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.ApplicationType">
+            <summary>
+            The types of applications that might be used
+            </summary>
+        </member>
+        <member name="F:PaulStovell.Common.ApplicationType.WindowsForms">
+            <summary>
+            Indicates a Windows Forms application
+            </summary>
+        </member>
+        <member name="F:PaulStovell.Common.ApplicationType.WebForms">
+            <summary>
+            Indicates an ASP.NET WebForms application (or web service)
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.Globals">
+            <summary>
+            This class contains global application settings avaliable to all applications
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.Globals.StartApplication(PaulStovell.Common.ApplicationType)">
+            <summary>
+            Lets us know that the application has started
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.Globals.ApplicationStarted">
+            <summary>
+            Gets whether the application has started or not. All constructors and any code
+            that uses databases or settings should check this to ensure we are not in design mode
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.Globals.ApplicationType">
+            <summary>
+            Determines the type of application currently running. This is useful in deciding 
+            where settings should be placed
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.Log">
+            <summary>
+            A simple logging framework.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.Log.#ctor">
+            <summary>
+            Constructor. In most cases, just use Log.Default rather than creating a new log.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteInformation(System.Exception)">
+            <summary>
+            Writes an Information log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteInformation(System.String)">
+            <summary>
+            Writes an Information log entry to this log.
+            </summary>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteInformation(System.String,System.Exception)">
+            <summary>
+            Writes an Information log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteWarning(System.Exception)">
+            <summary>
+            Writes a Warning log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteWarning(System.String)">
+            <summary>
+            Writes a Warning log entry to this log.
+            </summary>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteWarning(System.String,System.Exception)">
+            <summary>
+            Writes a Warning log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteError(System.Exception)">
+            <summary>
+            Writes an Error log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteError(System.String)">
+            <summary>
+            Writes an Error log entry to this log.
+            </summary>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.WriteError(System.String,System.Exception)">
+            <summary>
+            Writes an Error log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.Write(System.String,PaulStovell.Common.LogEventType)">
+            <summary>
+            Writes a log entry to this log.
+            </summary>
+            <param name="description">A description of the event.</param>
+            <param name="eventType">The type of event logged.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.Write(System.String,System.Exception)">
+            <summary>
+            Writes a log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="description">A description of the event.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.Write(System.Exception,PaulStovell.Common.LogEventType)">
+            <summary>
+            Writes a log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="eventType">The type of event logged.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.Write(System.Exception)">
+            <summary>
+            Writes a log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.Write(System.String,System.Exception,PaulStovell.Common.LogEventType)">
+            <summary>
+            Writes a log entry to this log.
+            </summary>
+            <param name="ex">An exception to log.</param>
+            <param name="description">A description of the event.</param>
+            <param name="eventType">The type of event logged.</param>
+        </member>
+        <member name="M:PaulStovell.Common.Log.OnLogEventWritten(PaulStovell.Common.GenericEventArgs{PaulStovell.Common.LogEvent})">
+            <summary>
+            Raises the LogEventWritten event.
+            </summary>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="E:PaulStovell.Common.Log.LogEventWritten">
+            <summary>
+            Raised when a Log.Write* method is called and the log should be written to.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.Log.Default">
+            <summary>
+            Gets the default log. This log will write to an XML-style log file.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.LogEventType">
+            <summary>
+            The possible levels of a log entry.
+            </summary>
+        </member>
+        <member name="F:PaulStovell.Common.LogEventType.Information">
+            <summary>
+            A simple information message.
+            </summary>
+        </member>
+        <member name="F:PaulStovell.Common.LogEventType.Warning">
+            <summary>
+            A warning. This might mean an exception was thrown but suppressed.
+            </summary>
+        </member>
+        <member name="F:PaulStovell.Common.LogEventType.Error">
+            <summary>
+            An error or exception.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.LogEvent">
+            <summary>
+            Represents a single log entry.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.String,PaulStovell.Common.LogEventType)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.Exception)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.Exception,PaulStovell.Common.LogEventType)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.LogEvent.#ctor(System.String,System.Exception,PaulStovell.Common.LogEventType)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.LogEvent.EventType">
+            <summary>
+            Indicates the type of log entry - warning, information or error.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.LogEvent.Description">
+            <summary>
+            A description message of the log entry.
+            </summary>
+        </member>
+        <member name="P:PaulStovell.Common.LogEvent.Exception">
+            <summary>
+            An optional exception to include in the log.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.Md5">
+            <summary>
+            Provides MD5 Hash methods for one-way string encryption.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.Md5.Hash(System.String,System.String)">
+            <summary>
+            Hashes a string message with a given salt
+            </summary>
+            <param name="message">The message to hash</param>
+            <param name="salt">A arbitrary 'salt' to used to make dictionary brute force attacks much harder</param>
+            <returns>The hashed string</returns>
+        </member>
+        <member name="M:PaulStovell.Common.Md5.Hash(System.String)">
+            <summary>
+            Calculates an MD5 Hash of a string
+            </summary>
+            <param name="message">The message to hash</param>
+            <returns>The hashed string</returns>
+        </member>
+        <member name="T:PaulStovell.Common.NameValueSettingsFile">
+            <summary>
+            A very simple type of settings file that stores individual names and values in a 
+            "name=value" format, with one setting on each line. 
+            </summary>
+            <remarks>
+            For performance reasons, always try to use the BeginEdit()/EndEdit() methods. The contents of the file will 
+            be loaded when BeginEdit is called, and committed when EndEdit is called. If you don't call these, the whole 
+            file will be read and saved every time GetValue and SetValue are called.
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.#ctor(System.String)">
+            <summary>
+            Constuctor for a settings file for the application (not specific to each user).
+            </summary>
+            <param name="filename">The name of the file.</param>
+            <remarks>
+            The path that the settings will be saved to will be:
+            
+            Application EXE Folder\filename
+            
+            So for example, if the filename is settings.txt:
+            
+            C:\Program Files\Wellington\Bin\settings.txt
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.#ctor(System.Environment.SpecialFolder,System.String)">
+            <summary>
+            Constructor for settings files to be stored in a special system folder.
+            </summary>
+            <param name="folder">The special system folder to use.</param>
+            <param name="filename">The name of the file.</param>
+            <remarks>
+            The path that settings are saved to will be:
+            
+            folder\Application name\filename
+            
+            For example, if <paramref name="folder"/> is ApplicationData, and the filename is settings.txt, the 
+            full file will be:
+            
+            C:\Program Files\User\Application Data\Name of Application\settings.txt.
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.ValidateFilename(System.String)">
+            <summary>
+            Checks that the file name that was passed in is valid.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.SetValue(System.String,System.String)">
+            <summary>
+            Sets the value of a setting.
+            </summary>
+            <param name="key">The name of the setting.</param>
+            <param name="value">The value of the setting.</param>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.GetValue(System.String)">
+            <summary>
+            Gets the value of a setting.
+            </summary>
+            <param name="key">The name of the setting.</param>
+            <returns>The setting if it's found, otherwise null.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.GetValue(System.String,System.String)">
+            <summary>
+            Gets the value of a setting.
+            </summary>
+            <param name="key">The name of the setting.</param>
+            <param name="defaultValue">A default value to use if no value exists.</param>
+            <returns>The setting if it's found, otherwise the default value.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.Reload">
+            <summary>
+            Reads all settings from the file.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.Save">
+            <summary>
+            Saves all settings in the file. 
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.BeginEdit">
+            <summary>
+            This method should be called before you begin to change a group of settings in a file. Normally when a value is set, the settings
+            file is written to disk each time. By calling BeginEdit, we suspend writing to the disk until EndEdit or CancelEdit are called.
+            </summary>
+            <remarks>Due to the joys of databinding, this method can be called multiple times. Subsequent calls to BeginEdit will be ignored until an 
+            EndEdit or CancelEdit call is made.</remarks>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.CancelEdit">
+            <summary>
+            This method should be called after BeginEdit is called. When called, any pending changes to the settings will be forgotten 
+            and restored to their original state before BeginEdit is called.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">If the BeginEdit method hasn't already been called.</exception>
+        </member>
+        <member name="M:PaulStovell.Common.NameValueSettingsFile.EndEdit">
+            <summary>
+            This method should be called after BeginEdit is called. When called, any pending changes to the settings will be written 
+            away to disk.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">If the BeginEdit method hasn't already been called.</exception>
+        </member>
+        <member name="P:PaulStovell.Common.NameValueSettingsFile.FullFileName">
+            <summary>
+            The full path, including the file name, where the settings are stored.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.PolyAlphaCipher">
+            <summary>
+            A simple polyalphabetic cipher. 
+            </summary>
+            <remarks>
+            Polyaplhabetic ciphers are stronger than Monoalphabetic ciphers as every letter can be enciphered 
+            differently, so frequency anaylysis on a particular message at a letter-by-letter basis isn't effective. 
+            For maximum secutiry however, it is recommended to change the keys used to encrypt messages often, 
+            and to possibly encipher a message multiple times with different keys each time.
+            </remarks>
+        </member>
+        <member name="F:PaulStovell.Common.PolyAlphaCipher._knownAlphabets">
+            <summary>
+            Holds information on a given cipher alphabet
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.PolyAlphaCipher.GetAlternativeAlphabets(PaulStovell.Common.CipherAlphabet)">
+            <summary>
+            Calculates altenative alphabets to use while encoding a given message
+            </summary>
+            <param name="cipherAlphabet">The original cipher alphabet</param>
+            <remarks>
+            I could speed this up by caching the key used to generate the cipher too, and only 
+            generating the necessary alternate alphabets needed, and reusing existing ones, but for now 
+            it should be fast enough.
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.PolyAlphaCipher.Encipher(System.String,PaulStovell.Common.CipherAlphabet,System.String)">
+            <summary>
+            Enciphers a given message
+            </summary>
+            <param name="plaintextMessage">The message to encipher</param>
+            <param name="alphabet">The alphabet to use to encipher. Try to use CipherAlphabet.Default in most occasions</param>
+            <param name="key">A key used to encipher the message</param>
+            <returns>The CipherText version of the message</returns>
+        </member>
+        <member name="M:PaulStovell.Common.PolyAlphaCipher.Decipher(System.String,PaulStovell.Common.CipherAlphabet,System.String)">
+            <summary>
+            Deciphers a given message
+            </summary>
+            <param name="cipherTextMessage">The enciphered text you wish to decode</param>
+            <param name="alphabet">The alphabet to use to encipher. Try to use CipherAlphabet.Default in most occasions</param>
+            <param name="key">A key used to encipher the message</param>
+            <returns></returns>
+        </member>
+        <member name="T:PaulStovell.Common.PoolLease`1">
+            <summary>
+            Represents a lease on an item for a generic Pool.
+            </summary>
+            <typeparam name="T">The type of item provided by this lease.</typeparam>
+        </member>
+        <member name="M:PaulStovell.Common.PoolLease`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.PoolLease`1.#ctor(`0)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="item">The item pooled item provided by this lease.</param>
+        </member>
+        <member name="M:PaulStovell.Common.PoolLease`1.Expire">
+            <summary>
+            Gets a value indicating whether the item provided by this lease has expired and can be 
+            scavenged.
+            </summary>
+            <returns>True if this item has expired, otherwise false.</returns>
+        </member>
+        <member name="P:PaulStovell.Common.PoolLease`1.PooledItem">
+            <summary>
+            Gets or sets the item provided by this lease.
+            </summary>
+        </member>
+        <member name="T:PaulStovell.Common.ReflectionUtilities">
+            <summary>
+            Utilities to make reflection easier.
+            </summary>
+        </member>
+        <member name="M:PaulStovell.Common.ReflectionUtilities.GetAttribute``1(System.Reflection.ICustomAttributeProvider)">
+            <summary>
+            Gets an attribute from a Type or member of a type. Returns null if the 
+            member or type is not marked with the attribute.
+            </summary>
+            <typeparam name="T">The type of attribute to look for.</typeparam>
+            <param name="t">The type of member info to look for the attribute.</param>
+            <returns>An instance of that attribute, or null.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.ReflectionUtilities.GetAttributes``1(System.Reflection.ICustomAttributeProvider)">
+            <summary>
+            Gets all instances of an attribute on a type of member info.
+            </summary>
+            <typeparam name="T">The type of attribute to return.</typeparam>
+            <param name="t">The type of member info to get attributes from.</param>
+            <returns>A list of the attributes.</returns>
+        </member>
+        <member name="M:PaulStovell.Common.ReflectionUtilities.DumpBinaryResourceToFile(System.Reflection.Assembly,System.String,System.String)">
+            <summary>
+            Reads an embedded binary resource file from an assembly and writes it to a given file path.
+            </summary>
+            <param name="assembly">The assembly to read the file from.</param>
+            <param name="resourceName">The full name of the embedded resource to retrieve.</param>
+            <param name="path">The path to write the file out to.</param>
+        </member>
+        <member name="T:PaulStovell.Common.SystemUtilities">
+            <summary>
+            Common utility methods.
+            </summary>
+            <remarks>
+            As this class grows it should be split into more specialised classes, but for now
+            it is more convenient here.
+            </remarks>
+        </member>
+        <member name="M:PaulStovell.Common.SystemUtilities.OpenExternalUrlInBrowser(System.String)">
+            <summary>
+            Opens a URL in the default system browser. For example: http://www.paulstovell.net.
+            </summary>
+            <param name="url">The URL to open.</param>
+        </member>
+        <member name="M:PaulStovell.Common.SystemUtilities.OpenExternalUrlInBrowser(System.Uri)">
+            <summary>
+            Opens a URL in the default system browser. For example: http://www.paulstovell.net.
+            </summary>
+            <param name="url">The URL to open.</param>
+        </member>
+        <member name="M:PaulStovell.Common.SystemUtilities.CreateTemporaryFile(System.String)">
+            <summary>
+            Creates a temporary file. The location is usually something like:
+            /Application Data/ProductName/Temporary Files/GUID/filename.
+            </summary>
+            <param name="filename">The file name to append to the end of the random generated path.</param>
+            <returns>The full random path created.</returns>
+        </member>
+    </members>
+</doc>

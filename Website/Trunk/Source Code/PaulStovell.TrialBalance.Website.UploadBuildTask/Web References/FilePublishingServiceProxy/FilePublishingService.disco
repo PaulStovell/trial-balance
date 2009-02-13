@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://download.trialbalance.net.au/Services/FilePublishingService.asmx?wsdl" docRef="http://download.trialbalance.net.au/Services/FilePublishingService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://download.trialbalance.net.au/Services/FilePublishingService.asmx" xmlns:q1="http://download.trialbalance.net.au/" binding="q1:FilePublishingServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://download.trialbalance.net.au/Services/FilePublishingService.asmx" xmlns:q2="http://download.trialbalance.net.au/" binding="q2:FilePublishingServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

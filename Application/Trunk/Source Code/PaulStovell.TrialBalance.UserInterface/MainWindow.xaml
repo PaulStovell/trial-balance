@@ -1,0 +1,357 @@
+﻿<tb:BaseWindow x:Class="PaulStovell.TrialBalance.UserInterface.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tb="clr-namespace:PaulStovell.TrialBalance.UserInterface"
+    xmlns:tbp="clr-namespace:PaulStovell.TrialBalance.UserInterface.Providers"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Title="TrialBalance" 
+    WindowState="Maximized"
+    Width="1000"
+    Height="700"
+    Icon="{StaticResource Image_ApplicationIcon}"
+	Background="{StaticResource Brush_DefaultWindowBackground}"
+    x:Name="_this"
+    >
+    <tb:BaseWindow.Resources>
+        <system:Object x:Key="Local_AssetsGroupFilter" />
+        <system:Object x:Key="Local_LiabilitiesGroupFilter" />
+        <system:Object x:Key="Local_EquityGroupFilter" />
+        <system:Object x:Key="Local_RevenueGroupFilter" />
+        <system:Object x:Key="Local_ExpensesGroupFilter" />
+
+        <Storyboard Storyboard.TargetName="_border" x:Key="Local_FadeIn">
+            <ColorAnimation To="#FFFFFF" Storyboard.TargetProperty="Background.GradientStops[0].Color" Duration="0:0:0.03" />
+            <ColorAnimation To="#FAFAFA" Storyboard.TargetProperty="Background.GradientStops[1].Color" Duration="0:0:0.03" />
+        </Storyboard>
+
+        <Storyboard Storyboard.TargetName="_border"  x:Key="Local_FadeOut">
+            <ColorAnimation To="#E0E0E0" Storyboard.TargetProperty="Background.GradientStops[0].Color" Duration="0:0:0.3" />
+            <ColorAnimation To="#F0F0F0" Storyboard.TargetProperty="Background.GradientStops[1].Color" Duration="0:0:0.3" />
+        </Storyboard>
+
+        <Style x:Key="Local_FilingCabinetItemBorder" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="1,1,0,0" />
+            <Setter Property="BorderBrush" Value="#909090" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="CornerRadius" Value="7,0,0,0" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="Margin" Value="-1,-1,0,0" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#E0E0E0" Offset="0" />
+                        <GradientStop Color="#F0F0F0" Offset="0.5" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="Local_FilingCabinetItemControlTemplate">
+            <Border Focusable="True" Tag="{Binding ParentAccount}" KeyDown="Account_KeyDown" MouseDown="Account_Clicked" x:Name="_border" Style="{StaticResource Local_FilingCabinetItemBorder}">
+                <Border BorderBrush="#FFFFFF" Background="Transparent" CornerRadius="7,0,0,0" Padding="7" BorderThickness="1,1,1,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" FontSize="9pt" Text="{Binding Path=ParentAccount.Name}" />
+                        <TextBlock Grid.Column="1" FontSize="9pt" HorizontalAlignment="Right" Text="{Binding Path=OpeningBalance, Converter={StaticResource Converter_BalanceConverter}, ConverterParameter=ShowZero}" />
+                        <TextBlock Grid.Column="2" FontSize="9pt" HorizontalAlignment="Right" Text="{Binding Path=ClosingBalance, Converter={StaticResource Converter_BalanceConverter}, ConverterParameter=ShowZero}" />
+
+                    </Grid>
+                </Border>
+                <Border.Triggers>
+                    <EventTrigger RoutedEvent="Border.GotFocus">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Storyboard="{StaticResource Local_FadeIn}" />
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Border.LostFocus">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Storyboard="{StaticResource Local_FadeOut}" />
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Border.MouseEnter">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Storyboard="{StaticResource Local_FadeIn}" />
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Border.MouseLeave">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Storyboard="{StaticResource Local_FadeOut}" />
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Border.Triggers>
+            </Border>
+        </DataTemplate>
+
+        <Style x:Key="Local_AccountGroupList" TargetType="{x:Type Border}">
+            <Setter Property="Padding" Value="14" />
+            <Setter Property="CornerRadius" Value="7,0,0,0" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" Opacity="0.5">
+                        <GradientStop Offset="0" Color="Transparent" />
+                        <GradientStop Offset="1" Color="Transparent" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Local_ExpansionButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Canvas Width="30" Height="30" SnapsToDevicePixels="True">
+                            <Polygon Points="10,10, 20,15 10,20" StrokeThickness="1" SnapsToDevicePixels="True">
+                                <Polygon.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Offset="0" Color="#3399CC" />
+                                        <GradientStop Offset="1" Color="#3366CC" />
+                                    </LinearGradientBrush>
+                                </Polygon.Fill>
+                                <Polygon.Stroke>
+                                    <SolidColorBrush Color="#003366" />
+                                </Polygon.Stroke>
+                            </Polygon>
+                        </Canvas>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Local_AccountGroup" TargetType="{x:Type Expander}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Expander}">
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Expander.Expanded">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="_toggleButton" 
+                                                Storyboard.TargetProperty="RenderTransform.Angle" 
+                                                To="90" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Expander.Collapsed">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="_toggleButton"
+                                                Storyboard.TargetProperty="RenderTransform.Angle" 
+                                                To="0" Duration="0:0:0.2" 
+                                                />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                        <Border CornerRadius="7" Background="Transparent">
+                            <StackPanel>
+                                <StackPanel 
+                                    Orientation="Horizontal" Margin="7" IsHitTestVisible="True"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    MouseLeftButtonDown="ToggleExpansion" Tag="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                    >
+                                    <Button
+                                        Style="{StaticResource Local_ExpansionButton}" 
+                                        x:Name="_toggleButton" 
+                                        Click="ToggleExpansion" Tag="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                        >
+                                        <Button.RenderTransform>
+                                            <RotateTransform CenterX="15" CenterY="15" />
+                                        </Button.RenderTransform>
+                                    </Button>
+                                    <TextBlock 
+                                        Style="{StaticResource Text_Heading2}"
+                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Header}" VerticalAlignment="Center"
+                                        >
+                                    </TextBlock>
+                                </StackPanel>
+                                <Decorator Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsExpanded, Converter={StaticResource Converter_VisibilityConverter}}">
+                                    <Border
+                                        Visibility="{Binding Path=HasItems, Converter={StaticResource Converter_VisibilityConverter}}" 
+                                        BorderThickness="1" Background="#F0F0F0" BorderBrush="#909090" CornerRadius="8,0,0,0" Padding="0" SnapsToDevicePixels="True"
+                                        Margin="37,0,0,0"
+                                        x:Name="_expanderContentBorder"
+                                        >
+                                        <ItemsControl Focusable="False" ItemsSource="{Binding }" ItemTemplate="{StaticResource Local_FilingCabinetItemControlTemplate}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel IsItemsHost="True" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </Border>
+                                </Decorator>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+
+    </tb:BaseWindow.Resources>
+
+    <DockPanel 
+        LastChildFill="True"
+        PreviewTextInput="Window_PreviewTextInput"
+        >
+        <!--
+		Toolbar
+		-->
+        <Border 
+            DockPanel.Dock="Top"
+            Margin="7"
+            CornerRadius="7"
+            Background="#77FFFFFF"
+            Padding="7"
+            >
+            <StackPanel Orientation="Horizontal" Margin="0">
+
+
+                <!--
+				The button toolbar group
+				-->
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="AddAccountButton_Clicked" Style="{StaticResource Control_ToolbarButton}"
+                            tbp:StatusMessageProvider.StatusMessage="Click me!">
+                        <Image Source="{StaticResource Image_NewAccount}"
+                            Style="{StaticResource Control_ToolbarImageLarge}" />
+                    </Button>
+
+                    <Button Click="AddTransactionButton_Clicked" Style="{StaticResource Control_ToolbarButton}">
+                        <Image Source="{StaticResource Image_NewTransaction}"
+                            Style="{StaticResource Control_ToolbarImageLarge}" />
+                    </Button>
+
+                    <Button Click="WorkbookDetailsButton_Clicked" Style="{StaticResource Control_ToolbarButton}">
+                        <Image Source="{StaticResource Image_Workbook}"
+                            Style="{StaticResource Control_ToolbarImageLarge}" />
+                    </Button>
+
+                </StackPanel>
+
+                <!-- 
+				The filter TextBox
+				-->
+                <GroupBox Style="{StaticResource Control_ToolbarContainer}">
+                    <StackPanel>
+                        <TextBox
+                            x:Name="_filterTextBox"
+                            Text="{Binding ElementName=_this, Path=FilterText, UpdateSourceTrigger=PropertyChanged}" 
+                            tbp:DescriptionProvider.DescriptionText="Type here to filter the accounts..." 
+                            Width="250"
+                            KeyDown="FilterTextBox_KeyDown"
+                            PreviewKeyDown="FilterTextBox_PreviewKeyDown"
+						    >
+                            <TextBox.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#E3EBF7" Offset="0" />
+                                    <GradientStop Color="#FFFFFF" Offset="0.2" />
+                                    <GradientStop Color="#FFFFFF" Offset="0.5" />
+                                    <GradientStop Color="#FFFFFF" Offset="1" />
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Style.Triggers>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="tbp:DescriptionProvider.HasText" Value="True"/>
+                                                <Condition Property="IsFocused" Value="False"/>
+                                            </MultiTrigger.Conditions>
+                                            <MultiTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[0].Color" To="#F1F6FB" From="#CDDCF0" Duration="0:0:1.5" RepeatBehavior="Forever" AutoReverse="True" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[1].Color" To="#F1F6FB" From="#CDDCF0" Duration="0:0:1.5" RepeatBehavior="Forever" AutoReverse="True" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[2].Color" To="#CDDCF0" From="#F1F6FB" Duration="0:0:1.5" RepeatBehavior="Forever" AutoReverse="True" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[3].Color" To="#F1F6FB" From="#CDDCF0" Duration="0:0:1.5" RepeatBehavior="Forever" AutoReverse="True" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </MultiTrigger.EnterActions>
+                                            <MultiTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[0].Color" To="#E3EBF7" Duration="0:0:0.1" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[1].Color" To="#FFFFFF" Duration="0:0:0.1" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[2].Color" To="#FFFFFF" Duration="0:0:0.1" />
+                                                        <ColorAnimation Storyboard.TargetProperty="Background.GradientStops[3].Color" To="#FFFFFF" Duration="0:0:0.1" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </MultiTrigger.ExitActions>
+                                        </MultiTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- 
+				The Current Period control
+				-->
+                <GroupBox Style="{StaticResource Control_ToolbarContainer}">
+                    <StackPanel Margin="21,0,21,0">
+                        <StackPanel Margin="3.5" Orientation="Horizontal">
+                            <Button Click="PeriodBackButton_Clicked" Style="{StaticResource Control_ToolbarButton}">
+                                <Image Style="{StaticResource Control_ToolbarImageSmall}" Source="{StaticResource Image_PeriodBack}" />
+                            </Button>
+
+                            <TextBlock Style="{StaticResource Control_ToolbarText}" 
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7,3.5,7,3.5" 
+                                Text="{Binding Path=CurrentPeriod.Description}" />
+
+                            <Button Click="PeriodForwardButton_Clicked" Style="{StaticResource Control_ToolbarButton}">
+                                <Image Style="{StaticResource Control_ToolbarImageSmall}" Source="{StaticResource Image_PeriodForward}" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Border>
+        
+        <!-- 
+        The Body
+        -->
+        <Border 
+            Background="#FFFFFF"    
+            BorderBrush="#555555" 
+            BorderThickness="1"
+            CornerRadius="7"
+            Margin="7"
+		    >
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                >
+                <Border Style="{StaticResource Local_AccountGroupList}">
+                    <StackPanel x:Name="_accountsStackPanel">
+                        <Expander Style="{StaticResource Local_AccountGroup}" DataContext="{DynamicResource Local_AssetsGroupFilter}" Header="Assets" x:Name="_assetsExpander" />
+                        <Expander Style="{StaticResource Local_AccountGroup}" DataContext="{DynamicResource Local_LiabilitiesGroupFilter}" Header="Liabilities" x:Name="_liabilitiesExpander" />
+                        <Expander Style="{StaticResource Local_AccountGroup}" DataContext="{DynamicResource Local_EquityGroupFilter}" Header="Equity" x:Name="_equityExpander" />
+                        <Expander Style="{StaticResource Local_AccountGroup}" DataContext="{DynamicResource Local_RevenueGroupFilter}" Header="Revenue" x:Name="_revenueExpander" />
+                        <Expander Style="{StaticResource Local_AccountGroup}" DataContext="{DynamicResource Local_ExpensesGroupFilter}" Header="Expenses" x:Name="_expensesExpander" />
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+
+</tb:BaseWindow>

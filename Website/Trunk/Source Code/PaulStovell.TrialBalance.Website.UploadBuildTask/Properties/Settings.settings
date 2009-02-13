@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PaulStovell.TrialBalance.Website.UploadBuildTask.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PaulStovell_TrialBalance_Website_UploadBuildTask_UploadBuildServiceProxy_UploadBuildService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.trialbalance.net.au/Services/UploadBuildService.asmx</Value>
+    </Setting>
+    <Setting Name="PaulStovell_TrialBalance_Website_UploadBuildTask_FilePublishingServiceProxy_FilePublishingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://download.trialbalance.net.au/Services/FilePublishingService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

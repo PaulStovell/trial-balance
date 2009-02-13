@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.DomainModel", "PaulStovell.TrialBalance.DomainModel\PaulStovell.TrialBalance.DomainModel.csproj", "{6353F498-6CFD-4202-B7EF-8BF311A4D48B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{481EA52B-F7AB-4A0F-9C5F-1087A66393C9}"
+	ProjectSection(SolutionItems) = preProject
+		Manual.testrunconfig = Manual.testrunconfig
+		TrialBalance.vsmdi = TrialBalance.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.Tests", "PaulStovell.TrialBalance.Tests\PaulStovell.TrialBalance.Tests.csproj", "{D98D896C-8DCE-434F-BAF2-83FB462A478B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.UserInterface", "PaulStovell.TrialBalance.UserInterface\PaulStovell.TrialBalance.UserInterface.csproj", "{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaulStovell.TrialBalance.UserInterfaceProcesses", "PaulStovell.TrialBalance.UserInterfaceProcesses\PaulStovell.TrialBalance.UserInterfaceProcesses.csproj", "{046B0331-6CCA-46AD-A913-4C6A21F33D96}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://squidward:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PaulStovell.TrialBalance.DomainModel\\PaulStovell.TrialBalance.DomainModel.csproj
+		SccProjectName1 = PaulStovell.TrialBalance.DomainModel
+		SccLocalPath1 = PaulStovell.TrialBalance.DomainModel
+		SccProjectUniqueName2 = PaulStovell.TrialBalance.Tests\\PaulStovell.TrialBalance.Tests.csproj
+		SccProjectName2 = PaulStovell.TrialBalance.Tests
+		SccLocalPath2 = PaulStovell.TrialBalance.Tests
+		SccProjectUniqueName3 = PaulStovell.TrialBalance.UserInterface\\PaulStovell.TrialBalance.UserInterface.csproj
+		SccProjectName3 = PaulStovell.TrialBalance.UserInterface
+		SccLocalPath3 = PaulStovell.TrialBalance.UserInterface
+		SccProjectUniqueName4 = PaulStovell.TrialBalance.UserInterfaceProcesses\\PaulStovell.TrialBalance.UserInterfaceProcesses.csproj
+		SccProjectName4 = PaulStovell.TrialBalance.UserInterfaceProcesses
+		SccLocalPath4 = PaulStovell.TrialBalance.UserInterfaceProcesses
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TrialBalance.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6353F498-6CFD-4202-B7EF-8BF311A4D48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6353F498-6CFD-4202-B7EF-8BF311A4D48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6353F498-6CFD-4202-B7EF-8BF311A4D48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6353F498-6CFD-4202-B7EF-8BF311A4D48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98D896C-8DCE-434F-BAF2-83FB462A478B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98D896C-8DCE-434F-BAF2-83FB462A478B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98D896C-8DCE-434F-BAF2-83FB462A478B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98D896C-8DCE-434F-BAF2-83FB462A478B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51BEB0AF-B3F8-42F4-B650-813CF985B5A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{046B0331-6CCA-46AD-A913-4C6A21F33D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046B0331-6CCA-46AD-A913-4C6A21F33D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046B0331-6CCA-46AD-A913-4C6A21F33D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046B0331-6CCA-46AD-A913-4C6A21F33D96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,22 @@
+<p>
+If you wish to compile and run TrialBalance from source code, you will require:
+</p>
+<ul>
+<li>Microsoft Visual Studio 2005 Team Suite Edition; or</li>
+<li>Microsoft Visual Studio 2005 Tester Edition; or</li>
+<li>Microsoft Visual Studio 2005 Professional Edition*</li>
+</ul>
+<p>
+You will also need to install the RTM versions of the .NET 3.0 Framework. If you are using Windows XP, 
+you will need to download and install the .NET 3.0 Runtime and SDK. 
+If you are using Windows Vista, .NET 3.0 should already be installed. 
+</p>
+<p>
+You can learn more about downloading the .NET 3.0 Framework bits here:
+</p>
+<p>
+<a href="http://blogs.msdn.com/tomarcher/archive/2006/07/17/668572.aspx">http://blogs.msdn.com/tomarcher/archive/2006/07/17/668572.aspx</a>
+</p>
+<p>
+* - You should be able to compile under Visual Studio 2005 Professional Edition, but when you open the solution you will be prompted with a message informing you that some of the projects could not be opened. Those projects contain unit tests, and require Visual Studio 2005 Tester Edition or greater in order to use them. However, this should not stop you from being able to open and compile the solution. 
+</p>
